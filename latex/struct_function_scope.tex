@@ -1,0 +1,285 @@
+\hypertarget{struct_function_scope}{}\doxysection{Function\+Scope Struct Reference}
+\label{struct_function_scope}\index{FunctionScope@{FunctionScope}}
+
+
+Stores needed information for function execution.  
+
+
+
+
+{\ttfamily \#include $<$interpreter.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_function_scope_a44af05e8c53d578b4f22077224f15a1a}{Function\+Scope}} (\mbox{\hyperlink{struct_global_scope}{Global\+Scope}} \&global\+Exec\+Context, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_function_scope}{Function\+Scope}} $>$ parent\+Scope, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_node}{Node}} $>$ $>$ \&parameters) noexcept
+\item 
+\mbox{\hyperlink{struct_function_scope_adf9181830567d52d6ae6f1b38e92a296}{Function\+Scope}} (\mbox{\hyperlink{struct_global_scope}{Global\+Scope}} \&global\+Exec\+Context, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_function_scope}{Function\+Scope}} $>$ parent\+Scope, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_node}{Node}} $>$ $>$ \&\&parameters) noexcept
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ \mbox{\hyperlink{struct_function_scope_a58366310b2c69a3d655b1a68626dda2e}{nth}} (size\+\_\+t idx) const
+\begin{DoxyCompactList}\small\item\em Evals the nth parameter at runtime. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ \mbox{\hyperlink{struct_function_scope_aa9377a769ea974faba8eaa93e497b667}{head\+Of\+List}} () const
+\begin{DoxyCompactList}\small\item\em For lazy evaluation purposes returns head of list. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ \mbox{\hyperlink{struct_function_scope_ae1dcc436bb3b5dba7faf256f759e2a65}{tail\+Of\+List}} () const
+\begin{DoxyCompactList}\small\item\em For lazy evaluation purposes returns tail of list. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{struct_function_scope_aaeeef1de68ae96554b445f780689eee7}{param\+Count}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets the parameters count. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_global_scope}{Global\+Scope}} \& \mbox{\hyperlink{struct_function_scope_aea11e674aa27844aba0a016f6f355154}{get\+Global\+Scope}} () noexcept
+\begin{DoxyCompactList}\small\item\em Accessor for the global execution context. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_global_scope}{Global\+Scope}} \& \mbox{\hyperlink{struct_function_scope_ae25a6b84e31f5a716ea8c5ebb0edff4a}{get\+Global\+Scope}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Accessor for the global execution context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores needed information for function execution. 
+
+Definition at line \mbox{\hyperlink{interpreter_8h_source_l00037}{37}} of file \mbox{\hyperlink{interpreter_8h_source}{interpreter.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_function_scope_a44af05e8c53d578b4f22077224f15a1a}\label{struct_function_scope_a44af05e8c53d578b4f22077224f15a1a}} 
+\index{FunctionScope@{FunctionScope}!FunctionScope@{FunctionScope}}
+\index{FunctionScope@{FunctionScope}!FunctionScope@{FunctionScope}}
+\doxysubsubsection{\texorpdfstring{FunctionScope()}{FunctionScope()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Function\+Scope\+::\+Function\+Scope (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_global_scope}{Global\+Scope}} \&}]{global\+Exec\+Context,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_function_scope}{Function\+Scope}} $>$}]{parent\+Scope,  }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_node}{Node}} $>$ $>$ \&}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{interpreter_8h_source_l00039}{39}} of file \mbox{\hyperlink{interpreter_8h_source}{interpreter.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042         : globalExecContext(globalExecContext),}
+\DoxyCodeLine{00043           parentScope(parentScope),}
+\DoxyCodeLine{00044           parameters(parameters)}
+\DoxyCodeLine{00045     \{}
+\DoxyCodeLine{00046     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_function_scope_adf9181830567d52d6ae6f1b38e92a296}\label{struct_function_scope_adf9181830567d52d6ae6f1b38e92a296}} 
+\index{FunctionScope@{FunctionScope}!FunctionScope@{FunctionScope}}
+\index{FunctionScope@{FunctionScope}!FunctionScope@{FunctionScope}}
+\doxysubsubsection{\texorpdfstring{FunctionScope()}{FunctionScope()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Function\+Scope\+::\+Function\+Scope (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_global_scope}{Global\+Scope}} \&}]{global\+Exec\+Context,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_function_scope}{Function\+Scope}} $>$}]{parent\+Scope,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_node}{Node}} $>$ $>$ \&\&}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{interpreter_8h_source_l00047}{47}} of file \mbox{\hyperlink{interpreter_8h_source}{interpreter.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050         : globalExecContext(globalExecContext),}
+\DoxyCodeLine{00051           parentScope(parentScope),}
+\DoxyCodeLine{00052           parameters(std::move(parameters))}
+\DoxyCodeLine{00053     \{}
+\DoxyCodeLine{00054     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_function_scope_ae25a6b84e31f5a716ea8c5ebb0edff4a}\label{struct_function_scope_ae25a6b84e31f5a716ea8c5ebb0edff4a}} 
+\index{FunctionScope@{FunctionScope}!getGlobalScope@{getGlobalScope}}
+\index{getGlobalScope@{getGlobalScope}!FunctionScope@{FunctionScope}}
+\doxysubsubsection{\texorpdfstring{getGlobalScope()}{getGlobalScope()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_global_scope}{Global\+Scope}} \& Function\+Scope\+::get\+Global\+Scope (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Accessor for the global execution context. 
+
+
+
+Definition at line \mbox{\hyperlink{interpreter_8h_source_l00071}{71}} of file \mbox{\hyperlink{interpreter_8h_source}{interpreter.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071 \{ \textcolor{keywordflow}{return} globalExecContext; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_function_scope_aea11e674aa27844aba0a016f6f355154}\label{struct_function_scope_aea11e674aa27844aba0a016f6f355154}} 
+\index{FunctionScope@{FunctionScope}!getGlobalScope@{getGlobalScope}}
+\index{getGlobalScope@{getGlobalScope}!FunctionScope@{FunctionScope}}
+\doxysubsubsection{\texorpdfstring{getGlobalScope()}{getGlobalScope()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_global_scope}{Global\+Scope}} \& Function\+Scope\+::get\+Global\+Scope (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Accessor for the global execution context. 
+
+
+
+Definition at line \mbox{\hyperlink{interpreter_8h_source_l00068}{68}} of file \mbox{\hyperlink{interpreter_8h_source}{interpreter.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068 \{ \textcolor{keywordflow}{return} globalExecContext; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_function_scope_aa9377a769ea974faba8eaa93e497b667}\label{struct_function_scope_aa9377a769ea974faba8eaa93e497b667}} 
+\index{FunctionScope@{FunctionScope}!headOfList@{headOfList}}
+\index{headOfList@{headOfList}!FunctionScope@{FunctionScope}}
+\doxysubsubsection{\texorpdfstring{headOfList()}{headOfList()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ Function\+Scope\+::head\+Of\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+For lazy evaluation purposes returns head of list. 
+
+
+
+Definition at line \mbox{\hyperlink{interpreter_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{interpreter_8cpp_source}{interpreter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047 \{}
+\DoxyCodeLine{00048     \textcolor{keywordflow}{if} (parameters.empty())}
+\DoxyCodeLine{00049     \{}
+\DoxyCodeLine{00050         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}head() with no parameters given"{}});}
+\DoxyCodeLine{00051     \}}
+\DoxyCodeLine{00052 }
+\DoxyCodeLine{00053     std::shared\_ptr<ListLiteralNode> l = std::dynamic\_pointer\_cast<ListLiteralNode>(parameters[0]);}
+\DoxyCodeLine{00054     \textcolor{keywordflow}{if} (l)}
+\DoxyCodeLine{00055     \{}
+\DoxyCodeLine{00056         \textcolor{keywordflow}{return} l-\/>contents[0]-\/>eval(*parentScope);}
+\DoxyCodeLine{00057     \}}
+\DoxyCodeLine{00058 }
+\DoxyCodeLine{00059     \textcolor{keyword}{const} std::shared\_ptr<Value> fst = parameters[0]-\/>eval(*parentScope);}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061     \textcolor{keywordflow}{if} (fst-\/>type == Value::Type::LIST\_LITERAL)}
+\DoxyCodeLine{00062     \{}
+\DoxyCodeLine{00063         \textcolor{keyword}{const} std::shared\_ptr<ListLiteralValue> lst = std::dynamic\_pointer\_cast<ListLiteralValue>(fst);}
+\DoxyCodeLine{00064 }
+\DoxyCodeLine{00065         \textcolor{keywordflow}{if} (!lst-\/>values.empty())}
+\DoxyCodeLine{00066         \{}
+\DoxyCodeLine{00067             \textcolor{keywordflow}{return} lst-\/>values.front();}
+\DoxyCodeLine{00068         \}}
+\DoxyCodeLine{00069 }
+\DoxyCodeLine{00070         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Cannot get head of empty list!"{}});}
+\DoxyCodeLine{00071         }
+\DoxyCodeLine{00072     \}}
+\DoxyCodeLine{00073     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (fst-\/>type == Value::Type::INFINITE\_LIST)}
+\DoxyCodeLine{00074     \{}
+\DoxyCodeLine{00075         \textcolor{keywordflow}{return} std::dynamic\_pointer\_cast<Value>(std::make\_shared<RealValue>(}
+\DoxyCodeLine{00076             std::dynamic\_pointer\_cast<InfiniteListValue>(fst)-\/>first}
+\DoxyCodeLine{00077         ));}
+\DoxyCodeLine{00078     \}}
+\DoxyCodeLine{00079 }
+\DoxyCodeLine{00080     \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Typing error: the argument to head() must be a list!"{}});}
+\DoxyCodeLine{00081 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_function_scope_a58366310b2c69a3d655b1a68626dda2e}\label{struct_function_scope_a58366310b2c69a3d655b1a68626dda2e}} 
+\index{FunctionScope@{FunctionScope}!nth@{nth}}
+\index{nth@{nth}!FunctionScope@{FunctionScope}}
+\doxysubsubsection{\texorpdfstring{nth()}{nth()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ Function\+Scope\+::nth (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx }\end{DoxyParamCaption}) const}
+
+
+
+Evals the nth parameter at runtime. 
+
+
+
+Definition at line \mbox{\hyperlink{interpreter_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{interpreter_8cpp_source}{interpreter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035 \{}
+\DoxyCodeLine{00036     \textcolor{keywordflow}{if} (idx >= parameters.size())}
+\DoxyCodeLine{00037     \{}
+\DoxyCodeLine{00038         \textcolor{keywordflow}{throw} std::runtime\_error(}
+\DoxyCodeLine{00039             \textcolor{stringliteral}{"{}Referencing formal parameter with index outside range of formal "{}}}
+\DoxyCodeLine{00040             \textcolor{stringliteral}{"{}parameter indexes!"{}});}
+\DoxyCodeLine{00041     \}}
+\DoxyCodeLine{00042 }
+\DoxyCodeLine{00043     \textcolor{keywordflow}{return} parameters[idx]-\/>eval(*parentScope);}
+\DoxyCodeLine{00044 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_function_scope_aaeeef1de68ae96554b445f780689eee7}\label{struct_function_scope_aaeeef1de68ae96554b445f780689eee7}} 
+\index{FunctionScope@{FunctionScope}!paramCount@{paramCount}}
+\index{paramCount@{paramCount}!FunctionScope@{FunctionScope}}
+\doxysubsubsection{\texorpdfstring{paramCount()}{paramCount()}}
+{\footnotesize\ttfamily size\+\_\+t Function\+Scope\+::param\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Gets the parameters count. 
+
+
+
+Definition at line \mbox{\hyperlink{interpreter_8h_source_l00065}{65}} of file \mbox{\hyperlink{interpreter_8h_source}{interpreter.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065 \{ \textcolor{keywordflow}{return} parameters.size(); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_function_scope_ae1dcc436bb3b5dba7faf256f759e2a65}\label{struct_function_scope_ae1dcc436bb3b5dba7faf256f759e2a65}} 
+\index{FunctionScope@{FunctionScope}!tailOfList@{tailOfList}}
+\index{tailOfList@{tailOfList}!FunctionScope@{FunctionScope}}
+\doxysubsubsection{\texorpdfstring{tailOfList()}{tailOfList()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ Function\+Scope\+::tail\+Of\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+For lazy evaluation purposes returns tail of list. 
+
+
+
+Definition at line \mbox{\hyperlink{interpreter_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{interpreter_8cpp_source}{interpreter.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084 \{}
+\DoxyCodeLine{00085     \textcolor{keywordflow}{if} (parameters.empty())}
+\DoxyCodeLine{00086     \{}
+\DoxyCodeLine{00087         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}tail() with no parameters given"{}});}
+\DoxyCodeLine{00088     \}}
+\DoxyCodeLine{00089 }
+\DoxyCodeLine{00090     std::shared\_ptr<ListLiteralNode> l = std::dynamic\_pointer\_cast<ListLiteralNode>(parameters[0]);}
+\DoxyCodeLine{00091     \textcolor{keywordflow}{if} (l)}
+\DoxyCodeLine{00092     \{}
+\DoxyCodeLine{00093         std::vector<std::shared\_ptr<Value>> newVals;}
+\DoxyCodeLine{00094         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < l-\/>contents.size(); ++i)}
+\DoxyCodeLine{00095         \{}
+\DoxyCodeLine{00096             newVals.push\_back(l-\/>contents[i]-\/>eval(*parentScope));}
+\DoxyCodeLine{00097         \}}
+\DoxyCodeLine{00098 }
+\DoxyCodeLine{00099         \textcolor{keywordflow}{return} std::dynamic\_pointer\_cast<Value>(std::make\_shared<ListLiteralValue>(newVals));}
+\DoxyCodeLine{00100     \}}
+\DoxyCodeLine{00101 }
+\DoxyCodeLine{00102     \textcolor{keyword}{const} std::shared\_ptr<Value> fst = parameters[0]-\/>eval(*parentScope);}
+\DoxyCodeLine{00103 }
+\DoxyCodeLine{00104     \textcolor{keywordflow}{if} (fst-\/>type == Value::Type::LIST\_LITERAL)}
+\DoxyCodeLine{00105     \{}
+\DoxyCodeLine{00106         std::vector<std::shared\_ptr<Value>> \&vals = std::dynamic\_pointer\_cast<ListLiteralValue>(fst)-\/>values;}
+\DoxyCodeLine{00107         std::vector<std::shared\_ptr<Value>> newVals;}
+\DoxyCodeLine{00108         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < vals.size(); ++i)}
+\DoxyCodeLine{00109         \{}
+\DoxyCodeLine{00110             newVals.push\_back(vals[i]);}
+\DoxyCodeLine{00111         \}}
+\DoxyCodeLine{00112 }
+\DoxyCodeLine{00113         \textcolor{keywordflow}{return} std::dynamic\_pointer\_cast<Value>(std::make\_shared<ListLiteralValue>(newVals));}
+\DoxyCodeLine{00114     \}}
+\DoxyCodeLine{00115     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (fst-\/>type == Value::Type::INFINITE\_LIST)}
+\DoxyCodeLine{00116     \{}
+\DoxyCodeLine{00117         \textcolor{keyword}{const} std::shared\_ptr<InfiniteListValue> lst = std::dynamic\_pointer\_cast<InfiniteListValue>(fst);}
+\DoxyCodeLine{00118 }
+\DoxyCodeLine{00119         \textcolor{keywordflow}{return} std::dynamic\_pointer\_cast<Value>(std::make\_shared<InfiniteListValue>(}
+\DoxyCodeLine{00120             lst-\/>first + lst-\/>difference, lst-\/>difference}
+\DoxyCodeLine{00121         ));}
+\DoxyCodeLine{00122     \}}
+\DoxyCodeLine{00123 }
+\DoxyCodeLine{00124     \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Typing error: the argument to tail() must be a list!"{}});}
+\DoxyCodeLine{00125 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+interpreter.\+h\item 
+interpreter.\+cpp\end{DoxyCompactItemize}

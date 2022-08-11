@@ -1,0 +1,199 @@
+\hypertarget{class_lexer}{}\doxysection{Lexer Class Reference}
+\label{class_lexer}\index{Lexer@{Lexer}}
+
+
+Lexing string into vector of Tokens.  
+
+
+
+
+{\ttfamily \#include $<$lexer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lexer_a0d343be36e8e46686001ab8606a87454}{Lexer}} (const std\+::string \&)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_token}{Token}} $>$ \mbox{\hyperlink{class_lexer_a02cebd12d0114caa513c2d46a335b7d1}{lex}} ()
+\begin{DoxyCompactList}\small\item\em Converts the internal string to list of Tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lexing string into vector of Tokens. 
+
+Definition at line \mbox{\hyperlink{lexer_8h_source_l00008}{8}} of file \mbox{\hyperlink{lexer_8h_source}{lexer.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_lexer_a0d343be36e8e46686001ab8606a87454}\label{class_lexer_a0d343be36e8e46686001ab8606a87454}} 
+\index{Lexer@{Lexer}!Lexer@{Lexer}}
+\index{Lexer@{Lexer}!Lexer@{Lexer}}
+\doxysubsubsection{\texorpdfstring{Lexer()}{Lexer()}}
+{\footnotesize\ttfamily Lexer\+::\+Lexer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{lexer_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{lexer_8cpp_source}{lexer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007     : input(input)}
+\DoxyCodeLine{00008 \{}
+\DoxyCodeLine{00009     ;}
+\DoxyCodeLine{00010 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lexer_a02cebd12d0114caa513c2d46a335b7d1}\label{class_lexer_a02cebd12d0114caa513c2d46a335b7d1}} 
+\index{Lexer@{Lexer}!lex@{lex}}
+\index{lex@{lex}!Lexer@{Lexer}}
+\doxysubsubsection{\texorpdfstring{lex()}{lex()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_token}{Token}} $>$ Lexer\+::lex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Converts the internal string to list of Tokens. 
+
+
+
+Definition at line \mbox{\hyperlink{lexer_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{lexer_8cpp_source}{lexer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013 \{}
+\DoxyCodeLine{00014     std::vector<Token> tokens;}
+\DoxyCodeLine{00015     \textcolor{keywordtype}{int} currentIdx = 0;}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{00017     \textcolor{keywordflow}{while} (currentIdx < input.length())}
+\DoxyCodeLine{00018     \{}
+\DoxyCodeLine{00019         \textcolor{keywordtype}{int} tokenStartIdx = currentIdx;}
+\DoxyCodeLine{00020         \textcolor{keywordtype}{char} lookahead = input[currentIdx];}
+\DoxyCodeLine{00021         }
+\DoxyCodeLine{00022         \textcolor{comment}{// White space or tab}}
+\DoxyCodeLine{00023         \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{' '} || lookahead == \textcolor{charliteral}{'\(\backslash\)t'})}
+\DoxyCodeLine{00024         \{}
+\DoxyCodeLine{00025             ++currentIdx;}
+\DoxyCodeLine{00026         \}}
+\DoxyCodeLine{00027         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{','})}
+\DoxyCodeLine{00028         \{}
+\DoxyCodeLine{00029             ++currentIdx;}
+\DoxyCodeLine{00030             \textcolor{comment}{// tokens.emplace\_back(Token::Type::comma, "{},"{}, tokenStartIdx);}}
+\DoxyCodeLine{00031             tokens.push\_back(\{ Token::Type::COMMA, \textcolor{stringliteral}{"{},"{}}, tokenStartIdx \});}
+\DoxyCodeLine{00032         \}}
+\DoxyCodeLine{00033         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{'['})}
+\DoxyCodeLine{00034         \{}
+\DoxyCodeLine{00035             ++currentIdx;}
+\DoxyCodeLine{00036             tokens.push\_back(\{Token::Type::OPEN\_SQUARE, \textcolor{stringliteral}{"{}["{}}, tokenStartIdx\});}
+\DoxyCodeLine{00037         \}}
+\DoxyCodeLine{00038         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{']'})}
+\DoxyCodeLine{00039         \{}
+\DoxyCodeLine{00040             ++currentIdx;}
+\DoxyCodeLine{00041             tokens.push\_back(\{Token::Type::CLOSE\_SQUARE, \textcolor{stringliteral}{"{}]"{}}, tokenStartIdx\});}
+\DoxyCodeLine{00042         \}}
+\DoxyCodeLine{00043         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{'('})}
+\DoxyCodeLine{00044         \{}
+\DoxyCodeLine{00045             ++currentIdx;}
+\DoxyCodeLine{00046             tokens.push\_back(\{Token::Type::OPEN\_ROUND, \textcolor{stringliteral}{"{}("{}}, tokenStartIdx\});}
+\DoxyCodeLine{00047         \}}
+\DoxyCodeLine{00048         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{')'})}
+\DoxyCodeLine{00049         \{}
+\DoxyCodeLine{00050             ++currentIdx;}
+\DoxyCodeLine{00051             tokens.push\_back(\{Token::Type::CLOSE\_ROUND, \textcolor{stringliteral}{"{})"{}}, tokenStartIdx\});}
+\DoxyCodeLine{00052         \}}
+\DoxyCodeLine{00053         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{'-\/'} \&\& currentIdx + 1 < input.length() \&\& input[currentIdx + 1] == \textcolor{charliteral}{'>'})}
+\DoxyCodeLine{00054         \{}
+\DoxyCodeLine{00055             currentIdx += 2;}
+\DoxyCodeLine{00056             tokens.push\_back(\{Token::Type::ARROW, \textcolor{stringliteral}{"{}-\/>"{}}, tokenStartIdx\});}
+\DoxyCodeLine{00057         \}}
+\DoxyCodeLine{00058         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{'\#'}) \textcolor{comment}{// Argument}}
+\DoxyCodeLine{00059         \{}
+\DoxyCodeLine{00060             std::string word;}
+\DoxyCodeLine{00061             ++currentIdx;}
+\DoxyCodeLine{00062 }
+\DoxyCodeLine{00063             \textcolor{keywordflow}{while} (currentIdx < input.length() \&\& isdigit(input[currentIdx]))}
+\DoxyCodeLine{00064             \{}
+\DoxyCodeLine{00065                 word += input[currentIdx];}
+\DoxyCodeLine{00066                 ++currentIdx;}
+\DoxyCodeLine{00067             \}}
+\DoxyCodeLine{00068 }
+\DoxyCodeLine{00069             tokens.push\_back(\{Token::Type::ARG, word, tokenStartIdx\});}
+\DoxyCodeLine{00070         \}}
+\DoxyCodeLine{00071         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((lookahead >= \textcolor{charliteral}{'0'} \&\& lookahead <= \textcolor{charliteral}{'9'}) || lookahead == \textcolor{charliteral}{'-\/'} || lookahead == \textcolor{charliteral}{'+'}) \textcolor{comment}{// Number}}
+\DoxyCodeLine{00072         \{}
+\DoxyCodeLine{00073             std::string word;}
+\DoxyCodeLine{00074             \textcolor{keywordtype}{bool} decimal = \textcolor{keyword}{false}, empty = \textcolor{keyword}{true};}
+\DoxyCodeLine{00075 }
+\DoxyCodeLine{00076             \textcolor{keywordflow}{if} (lookahead == \textcolor{charliteral}{'-\/'} || lookahead == \textcolor{charliteral}{'+'})}
+\DoxyCodeLine{00077             \{}
+\DoxyCodeLine{00078                 word += input[currentIdx];}
+\DoxyCodeLine{00079                 ++currentIdx;}
+\DoxyCodeLine{00080             \}}
+\DoxyCodeLine{00081 }
+\DoxyCodeLine{00082             \textcolor{keywordflow}{while} (currentIdx < input.length() \&\& isdigit(input[currentIdx]))}
+\DoxyCodeLine{00083             \{}
+\DoxyCodeLine{00084                 empty = \textcolor{keyword}{false};}
+\DoxyCodeLine{00085                 word += input[currentIdx];}
+\DoxyCodeLine{00086                 ++currentIdx;}
+\DoxyCodeLine{00087             \}}
+\DoxyCodeLine{00088 }
+\DoxyCodeLine{00089             \textcolor{keywordflow}{if} (currentIdx < input.length() \&\& input[currentIdx] == \textcolor{charliteral}{'.'})}
+\DoxyCodeLine{00090             \{}
+\DoxyCodeLine{00091                 decimal = \textcolor{keyword}{true};}
+\DoxyCodeLine{00092                 word += input[currentIdx];}
+\DoxyCodeLine{00093                 ++currentIdx;}
+\DoxyCodeLine{00094             \}}
+\DoxyCodeLine{00095 }
+\DoxyCodeLine{00096             \textcolor{keywordflow}{while} (currentIdx < input.length() \&\& isdigit(input[currentIdx]))}
+\DoxyCodeLine{00097             \{}
+\DoxyCodeLine{00098                 word += input[currentIdx];}
+\DoxyCodeLine{00099                 ++currentIdx;}
+\DoxyCodeLine{00100             \}}
+\DoxyCodeLine{00101 }
+\DoxyCodeLine{00102             \textcolor{keywordflow}{if} (empty)}
+\DoxyCodeLine{00103             \{}
+\DoxyCodeLine{00104                 \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Lexer error while lexing a number"{}});}
+\DoxyCodeLine{00105             \}}
+\DoxyCodeLine{00106 }
+\DoxyCodeLine{00107             \textcolor{keywordflow}{if} (decimal)}
+\DoxyCodeLine{00108             \{}
+\DoxyCodeLine{00109                 tokens.push\_back(\{Token::Type::KW\_DOUBLE, word, tokenStartIdx\});}
+\DoxyCodeLine{00110             \}}
+\DoxyCodeLine{00111             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00112             \{}
+\DoxyCodeLine{00113                 tokens.push\_back(\{Token::Type::KW\_INT, word, tokenStartIdx\});}
+\DoxyCodeLine{00114             \}}
+\DoxyCodeLine{00115         \}}
+\DoxyCodeLine{00116         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (isalpha(lookahead) || input[currentIdx] == \textcolor{charliteral}{'\_'}) \textcolor{comment}{// Identifier}}
+\DoxyCodeLine{00117         \{}
+\DoxyCodeLine{00118             std::string word;}
+\DoxyCodeLine{00119             }
+\DoxyCodeLine{00120             \textcolor{keywordflow}{while} (currentIdx < input.length() \&\&}
+\DoxyCodeLine{00121                    (isalpha(input[currentIdx]) || isdigit(input[currentIdx]) || input[currentIdx] == \textcolor{charliteral}{'\_'}))}
+\DoxyCodeLine{00122             \{}
+\DoxyCodeLine{00123                 word += input[currentIdx];}
+\DoxyCodeLine{00124                 ++currentIdx;}
+\DoxyCodeLine{00125             \}}
+\DoxyCodeLine{00126 }
+\DoxyCodeLine{00127             tokens.push\_back(\{Token::Type::FUNC, word, tokenStartIdx\});}
+\DoxyCodeLine{00128         \}}
+\DoxyCodeLine{00129         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00130         \{}
+\DoxyCodeLine{00131             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Unknown character while generating tokens"{}});}
+\DoxyCodeLine{00132         \}}
+\DoxyCodeLine{00133     \}}
+\DoxyCodeLine{00134 }
+\DoxyCodeLine{00135     tokens.push\_back(\{Token::Type::eof, \textcolor{stringliteral}{"{}"{}}, currentIdx\});}
+\DoxyCodeLine{00136 }
+\DoxyCodeLine{00137     \textcolor{keywordflow}{return} tokens;}
+\DoxyCodeLine{00138 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lexer.\+h\item 
+lexer.\+cpp\end{DoxyCompactItemize}

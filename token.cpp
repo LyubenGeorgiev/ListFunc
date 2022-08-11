@@ -1,49 +1,61 @@
 #include "token.h"
 
 
-std::ostream& operator<<(std::ostream& out, const Token &t)
+std::string Token::print() const
 {
-    out << "{TokenType: ";
-    switch (t._type)
+    std::string res = "{TokenType: ";
+
+    switch (type)
     {
-    case Token::Type::comma:
-        out << "Comma, ";
+    case Token::Type::COMMA:
+        res += "Comma, ";
         break;
-    case Token::Type::open_round:
-        out << "OPEN_ROUND, ";
+    case Token::Type::OPEN_ROUND:
+        res += "OPEN_ROUND, ";
         break;
-    case Token::Type::close_round:
-        out << "CLOSED_ROUND, ";
+    case Token::Type::CLOSE_ROUND:
+        res += "CLOSED_ROUND, ";
         break;
-    case Token::Type::open_square:
-        out << "OPEN_SQARE, ";
+    case Token::Type::OPEN_SQUARE:
+        res += "OPEN_SQARE, ";
         break;
-    case Token::Type::close_square:
-        out << "CLOSE_SQARE, ";
+    case Token::Type::CLOSE_SQUARE:
+        res += "CLOSE_SQARE, ";
         break;
-    case Token::Type::arrow:
-        out << "ARROW, ";
+    case Token::Type::ARROW:
+        res += "ARROW, ";
         break;
-    case Token::Type::arg:
-        out << "ARG, ";
+    case Token::Type::ARG:
+        res += "ARG, ";
         break;
-    case Token::Type::func:
-        out << "FUNC, ";
+    case Token::Type::FUNC:
+        res += "FUNC, ";
         break;
-    case Token::Type::kw_int:
-        out << "INT, ";
+    case Token::Type::KW_INT:
+        res += "INT, ";
         break;
-    case Token::Type::kw_double:
-        out << "DOUBLE, ";
+    case Token::Type::KW_DOUBLE:
+        res += "DOUBLE, ";
         break;
     case Token::Type::eof:
-        out << "EOF, ";
+        res += "EOF, ";
         break;
     default:
         break;
     }
 
-    out << "TokenData: \"" << t._data << "\", TokenStartIndex: " << t._startIdx << "}";
+    res += "TokenData: \"";
+    res += data;
+    res += "\", TokenStartIndex: ";
+    res += std::to_string(startIdx);
+    res += "}";
+
+    return res;
+}
+
+std::ostream& operator<<(std::ostream& out, const Token &t)
+{
+    out << t.print();
 
     return out;
 }

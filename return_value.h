@@ -1,11 +1,10 @@
 #pragma once
 
-#include "linked_list.hpp"
-
 #include <string>
 #include <vector>
 #include <memory>
 
+//! Abstract class for return values
 struct Value
 {
     enum class Type
@@ -20,19 +19,20 @@ struct Value
     Type type;
 
     Value(Type type) noexcept : type(type) {}
-    virtual ~Value() = default;
 
+    //! Gets the string representation of the data inside.
     virtual std::string toString() const noexcept = 0;
 
 };
 
-// A real value
+//! Contains double
 struct RealValue : public Value
 {
     const double value;
 
     RealValue(double value) noexcept : Value(Type::REAL_NUMBER), value(value) {}
 
+    //! Overriden method of class Value. Converts double to string.
     std::string toString() const noexcept override
     {
         return std::to_string(value);
@@ -40,13 +40,14 @@ struct RealValue : public Value
 
 };
 
-// An int value
+//! Contains int
 struct IntValue : public Value
 {
     const int value;
 
     IntValue(int value) noexcept : Value(Type::INT_NUMBER), value(value) {}
 
+    //! Overriden method of class Value. Converts int to string.
     std::string toString() const noexcept override
     {
         return std::to_string(value);
@@ -54,6 +55,7 @@ struct IntValue : public Value
 
 };
 
+//! Class for lists
 struct ListValue : public Value
 {
     ListValue(Value::Type type) : Value(type)
@@ -64,31 +66,28 @@ struct ListValue : public Value
         }
     }
 
-    // From Value
+    //! Gets the string representation of the list.
     virtual std::string toString() const noexcept = 0;
 
 };
 
-// A finite list
+//! Contains finite list
 struct ListLiteralValue : public ListValue
 {
-    linked_list<std::shared_ptr<Value>> values;
+    // Turns out vector is faster than forward_list for heavy list operations
+    std::vector<std::shared_ptr<Value>> values;
 
-    ListLiteralValue(const linked_list<std::shared_ptr<Value>> &values) noexcept
+    ListLiteralValue(const std::vector<std::shared_ptr<Value>> &values) noexcept
         : ListValue(Type::LIST_LITERAL), values(values)
     {
     }
 
+    //! Gets the string representation of the data inside.
     std::string toString() const noexcept override;
-
-    // Accessor to the n-th element
-    // std::shared_ptr<Value> nth(size_t idx) const override
-    // {
-    //     return values[idx];
-    // }
     
 };
 
+//! Contains infinite list
 struct InfiniteListValue : public ListValue
 {
     double first;
@@ -100,13 +99,10 @@ struct InfiniteListValue : public ListValue
         ;
     }
 
-    std::string toString() const noexcept override
-    {
-        return "INFINITE LIST(start " + std::to_string(first) +
-               " and difference " + std::to_string(difference) + ")";
-    }
+    //! Gets the string representation of the data inside.
+    std::string toString() const noexcept override;
 
-    // Accessor to the n-th element
+    //! Accessor to the n-th element
     std::shared_ptr<Value> nth(size_t idx) const
     {
         return std::shared_ptr<Value>(new RealValue(first + idx * difference));

@@ -1,0 +1,136 @@
+\hypertarget{struct_node}{}\doxysection{Node Struct Reference}
+\label{struct_node}\index{Node@{Node}}
+
+
+Abstract syntax tree structure.  
+
+
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+Inheritance diagram for Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.151079cm]{struct_node}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_node_af3b66b295cf8edc17e91768aee3e5b57}{Node}} (\mbox{\hyperlink{class_token}{Token}} token)
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ \mbox{\hyperlink{struct_node_ab6e81480e3edb77e75410cdeff9c03ef}{eval}} (\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&fnc\+Scp) const =0
+\begin{DoxyCompactList}\small\item\em Evaluates the AST. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{struct_node_a047b8becc718f90499cb7fae34910bd5}{print}} (std\+::ostream \&out) const
+\begin{DoxyCompactList}\small\item\em For debugging purposes. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \mbox{\hyperlink{struct_node_a50ca714e7aa6099de107e404e2b596f9}{get\+Argc}} () const =0
+\begin{DoxyCompactList}\small\item\em Needed for figuring out the number of arguments in function definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_token}{Token}} \mbox{\hyperlink{struct_node_a257d69949cc658cc99aa670f57a0efec}{token}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract syntax tree structure. 
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00014}{14}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_node_af3b66b295cf8edc17e91768aee3e5b57}\label{struct_node_af3b66b295cf8edc17e91768aee3e5b57}} 
+\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}}
+{\footnotesize\ttfamily Node\+::\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_token}{Token}}}]{token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{parser_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{parser_8cpp_source}{parser.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007     : token(token)}
+\DoxyCodeLine{00008 \{}
+\DoxyCodeLine{00009     ;}
+\DoxyCodeLine{00010 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_node_ab6e81480e3edb77e75410cdeff9c03ef}\label{struct_node_ab6e81480e3edb77e75410cdeff9c03ef}} 
+\index{Node@{Node}!eval@{eval}}
+\index{eval@{eval}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{eval()}{eval()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ Node\+::eval (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&}]{fnc\+Scp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Evaluates the AST. 
+
+
+
+Implemented in \mbox{\hyperlink{struct_int_node_ae4311837e9a5807e02ea1b6160bfc1af}{Int\+Node}}, \mbox{\hyperlink{struct_double_node_a057f2b079a311689d1dc2ee7489971f3}{Double\+Node}}, \mbox{\hyperlink{struct_list_literal_node_a3142e6dd5e54d4b510bb3825b7daaa38}{List\+Literal\+Node}}, \mbox{\hyperlink{struct_argument_node_a0af4b5d2eef88fb356e9e96d2e38dac9}{Argument\+Node}}, \mbox{\hyperlink{struct_function_definition_aeee4e2e5faa17715363656667a732abc}{Function\+Definition}}, \mbox{\hyperlink{struct_default_function_node_a980ac3f7dcabe686c651565161c39d5f}{Default\+Function\+Node}}, and \mbox{\hyperlink{struct_function_application_a6dd4df2ae7e4977925cadbceb6b0b63a}{Function\+Application}}.
+
+\mbox{\Hypertarget{struct_node_a50ca714e7aa6099de107e404e2b596f9}\label{struct_node_a50ca714e7aa6099de107e404e2b596f9}} 
+\index{Node@{Node}!getArgc@{getArgc}}
+\index{getArgc@{getArgc}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{getArgc()}{getArgc()}}
+{\footnotesize\ttfamily virtual size\+\_\+t Node\+::get\+Argc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Needed for figuring out the number of arguments in function definition. 
+
+
+
+Implemented in \mbox{\hyperlink{struct_int_node_a64149f802045d89960a85c78a34952a0}{Int\+Node}}, \mbox{\hyperlink{struct_double_node_a5c25bf3385709ffdc13211505cc49a58}{Double\+Node}}, \mbox{\hyperlink{struct_list_literal_node_a4fcad0b4b03d4741ad011d5b13bd6c5e}{List\+Literal\+Node}}, \mbox{\hyperlink{struct_argument_node_a9880e7a1e615e1ac16d6f19adde2327c}{Argument\+Node}}, \mbox{\hyperlink{struct_function_definition_a1f2f489eb2104279ce7ae2370a5511c4}{Function\+Definition}}, \mbox{\hyperlink{struct_function_application_a83580014e687a4553a05739652bf46ca}{Function\+Application}}, and \mbox{\hyperlink{struct_default_function_node_a493e87d273bc07a0fbe901354d50f71b}{Default\+Function\+Node}}.
+
+\mbox{\Hypertarget{struct_node_a047b8becc718f90499cb7fae34910bd5}\label{struct_node_a047b8becc718f90499cb7fae34910bd5}} 
+\index{Node@{Node}!print@{print}}
+\index{print@{print}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Node\+::print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+For debugging purposes. 
+
+
+
+Reimplemented in \mbox{\hyperlink{struct_list_literal_node_add942f0d76851c7ab5635de946d8cdab}{List\+Literal\+Node}}, \mbox{\hyperlink{struct_function_definition_a50b1dde5f6115732801d9f0f935e1732}{Function\+Definition}}, \mbox{\hyperlink{struct_function_application_ab10c70600f1180adacef83832b98c6fb}{Function\+Application}}, and \mbox{\hyperlink{struct_default_function_node_a3ac4f075192dce38ea91c320da900828}{Default\+Function\+Node}}.
+
+
+
+Definition at line \mbox{\hyperlink{parser_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{parser_8cpp_source}{parser.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013 \{}
+\DoxyCodeLine{00014     out << token;}
+\DoxyCodeLine{00015 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_node_a257d69949cc658cc99aa670f57a0efec}\label{struct_node_a257d69949cc658cc99aa670f57a0efec}} 
+\index{Node@{Node}!token@{token}}
+\index{token@{token}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{token}{token}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_token}{Token}} Node\+::token}
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00016}{16}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+parser.\+h\item 
+parser.\+cpp\end{DoxyCompactItemize}

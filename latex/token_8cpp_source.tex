@@ -1,0 +1,66 @@
+\hypertarget{token_8cpp_source}{}\doxysection{token.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}token.h"{}}}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00004}\mbox{\hyperlink{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}{00004}} std::string \mbox{\hyperlink{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}{Token::print}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00005}00005 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00006}00006     std::string res = \textcolor{stringliteral}{"{}\{TokenType: "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00008}00008     \textcolor{keywordflow}{switch} (type)}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00009}00009     \{}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00010}00010     \textcolor{keywordflow}{case} Token::Type::COMMA:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00011}00011         res += \textcolor{stringliteral}{"{}Comma, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00012}00012         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00013}00013     \textcolor{keywordflow}{case} Token::Type::OPEN\_ROUND:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00014}00014         res += \textcolor{stringliteral}{"{}OPEN\_ROUND, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00015}00015         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00016}00016     \textcolor{keywordflow}{case} Token::Type::CLOSE\_ROUND:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00017}00017         res += \textcolor{stringliteral}{"{}CLOSED\_ROUND, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00018}00018         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00019}00019     \textcolor{keywordflow}{case} Token::Type::OPEN\_SQUARE:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00020}00020         res += \textcolor{stringliteral}{"{}OPEN\_SQARE, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00021}00021         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00022}00022     \textcolor{keywordflow}{case} Token::Type::CLOSE\_SQUARE:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00023}00023         res += \textcolor{stringliteral}{"{}CLOSE\_SQARE, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00024}00024         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00025}00025     \textcolor{keywordflow}{case} Token::Type::ARROW:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00026}00026         res += \textcolor{stringliteral}{"{}ARROW, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00027}00027         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00028}00028     \textcolor{keywordflow}{case} Token::Type::ARG:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00029}00029         res += \textcolor{stringliteral}{"{}ARG, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00030}00030         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00031}00031     \textcolor{keywordflow}{case} Token::Type::FUNC:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00032}00032         res += \textcolor{stringliteral}{"{}FUNC, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00033}00033         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00034}00034     \textcolor{keywordflow}{case} Token::Type::KW\_INT:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00035}00035         res += \textcolor{stringliteral}{"{}INT, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00036}00036         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00037}00037     \textcolor{keywordflow}{case} Token::Type::KW\_DOUBLE:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00038}00038         res += \textcolor{stringliteral}{"{}DOUBLE, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00039}00039         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00040}00040     \textcolor{keywordflow}{case} Token::Type::eof:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00041}00041         res += \textcolor{stringliteral}{"{}EOF, "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00042}00042         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00043}00043     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00044}00044         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00045}00045     \}}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00047}00047     res += \textcolor{stringliteral}{"{}TokenData: \(\backslash\)"{}"{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00048}00048     res += data;}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00049}00049     res += \textcolor{stringliteral}{"{}\(\backslash\)"{}, TokenStartIndex: "{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00050}00050     res += std::to\_string(startIdx);}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00051}00051     res += \textcolor{stringliteral}{"{}\}"{}};}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00053}00053     \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00054}00054 \}}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00056}\mbox{\hyperlink{class_token_a87c4caa6c4e66a977462e85f6261ef43}{00056}} std::ostream\& operator<<(std::ostream\& out, \textcolor{keyword}{const} \mbox{\hyperlink{class_token}{Token}} \&t)}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00057}00057 \{}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00058}00058     out << t.\mbox{\hyperlink{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}{print}}();}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00060}00060     \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{\Hypertarget{token_8cpp_source_l00061}00061 \}}
+
+\end{DoxyCode}

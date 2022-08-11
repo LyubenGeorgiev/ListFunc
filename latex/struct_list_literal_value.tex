@@ -1,0 +1,125 @@
+\hypertarget{struct_list_literal_value}{}\doxysection{List\+Literal\+Value Struct Reference}
+\label{struct_list_literal_value}\index{ListLiteralValue@{ListLiteralValue}}
+
+
+Contains finite list.  
+
+
+
+
+{\ttfamily \#include $<$return\+\_\+value.\+h$>$}
+
+Inheritance diagram for List\+Literal\+Value\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{struct_list_literal_value}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_list_literal_value_a5a75e1d6183f0b9177ae70a21168c9d1}{List\+Literal\+Value}} (const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ $>$ \&values) noexcept
+\item 
+std\+::string \mbox{\hyperlink{struct_list_literal_value_a40aedb70e05b38f95f78d55515ab7d53}{to\+String}} () const noexcept override
+\begin{DoxyCompactList}\small\item\em Gets the string representation of the data inside. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ $>$ \mbox{\hyperlink{struct_list_literal_value_afe8a8694072b266803ac2895aee2b0ef}{values}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Contains finite list. 
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00075}{75}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_list_literal_value_a5a75e1d6183f0b9177ae70a21168c9d1}\label{struct_list_literal_value_a5a75e1d6183f0b9177ae70a21168c9d1}} 
+\index{ListLiteralValue@{ListLiteralValue}!ListLiteralValue@{ListLiteralValue}}
+\index{ListLiteralValue@{ListLiteralValue}!ListLiteralValue@{ListLiteralValue}}
+\doxysubsubsection{\texorpdfstring{ListLiteralValue()}{ListLiteralValue()}}
+{\footnotesize\ttfamily List\+Literal\+Value\+::\+List\+Literal\+Value (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00080}{80}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081         : \mbox{\hyperlink{struct_list_value}{ListValue}}(Type::LIST\_LITERAL), values(values)}
+\DoxyCodeLine{00082     \{}
+\DoxyCodeLine{00083     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_list_literal_value_a40aedb70e05b38f95f78d55515ab7d53}\label{struct_list_literal_value_a40aedb70e05b38f95f78d55515ab7d53}} 
+\index{ListLiteralValue@{ListLiteralValue}!toString@{toString}}
+\index{toString@{toString}!ListLiteralValue@{ListLiteralValue}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string List\+Literal\+Value\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Gets the string representation of the data inside. 
+
+
+
+Implements \mbox{\hyperlink{struct_list_value_af3d6c44b0cce71ce3db3f38858c574a1}{List\+Value}}.
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{return__value_8cpp_source}{return\+\_\+value.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006 \{}
+\DoxyCodeLine{00007     \textcolor{keywordflow}{if} (values.empty())}
+\DoxyCodeLine{00008     \{}
+\DoxyCodeLine{00009         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}[]"{}};}
+\DoxyCodeLine{00010     \}}
+\DoxyCodeLine{00011 }
+\DoxyCodeLine{00012     \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} valuesCnt = values.size();}
+\DoxyCodeLine{00013 }
+\DoxyCodeLine{00014     std::string res = \textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{00015     \textcolor{keywordtype}{bool} first = \textcolor{keyword}{true};}
+\DoxyCodeLine{00016     \textcolor{keywordflow}{for} (std::shared\_ptr<Value> val : values)}
+\DoxyCodeLine{00017     \{}
+\DoxyCodeLine{00018         \textcolor{keywordflow}{if} (!first)}
+\DoxyCodeLine{00019         \{}
+\DoxyCodeLine{00020             res += \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{00021         \}}
+\DoxyCodeLine{00022         }
+\DoxyCodeLine{00023         res += val-\/>toString();}
+\DoxyCodeLine{00024         first = \textcolor{keyword}{false};}
+\DoxyCodeLine{00025     \}}
+\DoxyCodeLine{00026     res += \textcolor{charliteral}{']'};}
+\DoxyCodeLine{00027     }
+\DoxyCodeLine{00028     \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{00029 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_list_literal_value_afe8a8694072b266803ac2895aee2b0ef}\label{struct_list_literal_value_afe8a8694072b266803ac2895aee2b0ef}} 
+\index{ListLiteralValue@{ListLiteralValue}!values@{values}}
+\index{values@{values}!ListLiteralValue@{ListLiteralValue}}
+\doxysubsubsection{\texorpdfstring{values}{values}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{struct_value}{Value}}$>$ $>$ List\+Literal\+Value\+::values}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00078}{78}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+return\+\_\+value.\+h\item 
+return\+\_\+value.\+cpp\end{DoxyCompactItemize}

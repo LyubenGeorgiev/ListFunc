@@ -1,0 +1,114 @@
+\hypertarget{struct_argument_node}{}\doxysection{Argument\+Node Struct Reference}
+\label{struct_argument_node}\index{ArgumentNode@{ArgumentNode}}
+
+
+Abstract syntax tree with argument index.  
+
+
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+Inheritance diagram for Argument\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_argument_node}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_argument_node_a143294574fb9d2af0a9cf8bc0ef3aba3}{Argument\+Node}} (\mbox{\hyperlink{class_token}{Token}} token)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ \mbox{\hyperlink{struct_argument_node_a0af4b5d2eef88fb356e9e96d2e38dac9}{eval}} (\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&fnc\+Scp) const override
+\begin{DoxyCompactList}\small\item\em Evaluates to \mbox{\hyperlink{struct_value}{Value}}. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{struct_argument_node_a9880e7a1e615e1ac16d6f19adde2327c}{get\+Argc}} () const override
+\begin{DoxyCompactList}\small\item\em Argc of arg is index + 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Abstract syntax tree with argument index. 
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00086}{86}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_argument_node_a143294574fb9d2af0a9cf8bc0ef3aba3}\label{struct_argument_node_a143294574fb9d2af0a9cf8bc0ef3aba3}} 
+\index{ArgumentNode@{ArgumentNode}!ArgumentNode@{ArgumentNode}}
+\index{ArgumentNode@{ArgumentNode}!ArgumentNode@{ArgumentNode}}
+\doxysubsubsection{\texorpdfstring{ArgumentNode()}{ArgumentNode()}}
+{\footnotesize\ttfamily Argument\+Node\+::\+Argument\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_token}{Token}}}]{token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{parser_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{parser_8cpp_source}{parser.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044     : \mbox{\hyperlink{struct_node}{Node}}(token)}
+\DoxyCodeLine{00045 \{}
+\DoxyCodeLine{00046     ;}
+\DoxyCodeLine{00047 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_argument_node_a0af4b5d2eef88fb356e9e96d2e38dac9}\label{struct_argument_node_a0af4b5d2eef88fb356e9e96d2e38dac9}} 
+\index{ArgumentNode@{ArgumentNode}!eval@{eval}}
+\index{eval@{eval}!ArgumentNode@{ArgumentNode}}
+\doxysubsubsection{\texorpdfstring{eval()}{eval()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ Argument\+Node\+::eval (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&}]{fnc\+Scp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Evaluates to \mbox{\hyperlink{struct_value}{Value}}. 
+
+
+
+Implements \mbox{\hyperlink{struct_node_ab6e81480e3edb77e75410cdeff9c03ef}{Node}}.
+
+
+
+Definition at line \mbox{\hyperlink{parser_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{parser_8cpp_source}{parser.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050 \{}
+\DoxyCodeLine{00051     \textcolor{keywordflow}{return} fncScp.\mbox{\hyperlink{struct_function_scope_a58366310b2c69a3d655b1a68626dda2e}{nth}}(std::stoi(token.data));}
+\DoxyCodeLine{00052 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_argument_node_a9880e7a1e615e1ac16d6f19adde2327c}\label{struct_argument_node_a9880e7a1e615e1ac16d6f19adde2327c}} 
+\index{ArgumentNode@{ArgumentNode}!getArgc@{getArgc}}
+\index{getArgc@{getArgc}!ArgumentNode@{ArgumentNode}}
+\doxysubsubsection{\texorpdfstring{getArgc()}{getArgc()}}
+{\footnotesize\ttfamily size\+\_\+t Argument\+Node\+::get\+Argc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Argc of arg is index + 1. 
+
+
+
+Implements \mbox{\hyperlink{struct_node_a50ca714e7aa6099de107e404e2b596f9}{Node}}.
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00094}{94}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095     \{}
+\DoxyCodeLine{00096         \textcolor{keywordflow}{return} std::stoi(token.data) + 1;}
+\DoxyCodeLine{00097     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+parser.\+h\item 
+parser.\+cpp\end{DoxyCompactItemize}

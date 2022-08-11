@@ -1,0 +1,122 @@
+\hypertarget{struct_value}{}\doxysection{Value Struct Reference}
+\label{struct_value}\index{Value@{Value}}
+
+
+Abstract class for return values.  
+
+
+
+
+{\ttfamily \#include $<$return\+\_\+value.\+h$>$}
+
+Inheritance diagram for Value\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{struct_value}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class {\bfseries Type} \{ {\bfseries REAL\+\_\+\+NUMBER}
+, {\bfseries INT\+\_\+\+NUMBER}
+, {\bfseries LIST\+\_\+\+LITERAL}
+, {\bfseries INFINITE\+\_\+\+LIST}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_value_a0cf64b73c752cf8876ebb6451d1faaf3}{Value}} (Type type) noexcept
+\item 
+virtual std\+::string \mbox{\hyperlink{struct_value_ae71e0ce1d445e3d9b9775cd415e88d58}{to\+String}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Gets the string representation of the data inside. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Type \mbox{\hyperlink{struct_value_a84349b91966d343ea1c8cf36ab8cc913}{type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class for return values. 
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00008}{8}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{struct_value_a669e0b7bc64c01dbec39297930398541}\label{struct_value_a669e0b7bc64c01dbec39297930398541}} 
+\index{Value@{Value}!Type@{Type}}
+\index{Type@{Type}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum class Value\+::\+Type\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00010}{10}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011     \{}
+\DoxyCodeLine{00012         REAL\_NUMBER,}
+\DoxyCodeLine{00013         INT\_NUMBER,}
+\DoxyCodeLine{00014         LIST\_LITERAL,}
+\DoxyCodeLine{00015         INFINITE\_LIST,}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{00017     \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_value_a0cf64b73c752cf8876ebb6451d1faaf3}\label{struct_value_a0cf64b73c752cf8876ebb6451d1faaf3}} 
+\index{Value@{Value}!Value@{Value}}
+\index{Value@{Value}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}}
+{\footnotesize\ttfamily Value\+::\+Value (\begin{DoxyParamCaption}\item[{Type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00021}{21}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021 : type(type) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_value_ae71e0ce1d445e3d9b9775cd415e88d58}\label{struct_value_ae71e0ce1d445e3d9b9775cd415e88d58}} 
+\index{Value@{Value}!toString@{toString}}
+\index{toString@{toString}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily virtual std\+::string Value\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Gets the string representation of the data inside. 
+
+
+
+Implemented in \mbox{\hyperlink{struct_real_value_a24c321b1e5a46452627a69dbd62067b8}{Real\+Value}}, \mbox{\hyperlink{struct_int_value_a0395d7f506aa8486700021f8b7186a05}{Int\+Value}}, \mbox{\hyperlink{struct_list_literal_value_a40aedb70e05b38f95f78d55515ab7d53}{List\+Literal\+Value}}, \mbox{\hyperlink{struct_infinite_list_value_a1f154ea00ee252d53febd27de81ad005}{Infinite\+List\+Value}}, and \mbox{\hyperlink{struct_list_value_af3d6c44b0cce71ce3db3f38858c574a1}{List\+Value}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_value_a84349b91966d343ea1c8cf36ab8cc913}\label{struct_value_a84349b91966d343ea1c8cf36ab8cc913}} 
+\index{Value@{Value}!type@{type}}
+\index{type@{type}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily Type Value\+::type}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00019}{19}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+return\+\_\+value.\+h\end{DoxyCompactItemize}

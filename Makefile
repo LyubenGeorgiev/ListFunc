@@ -1,5 +1,5 @@
-listFunc: main.cpp token.cpp return_value.cpp parser.cpp lexer.cpp interpreter.cpp
-	g++ -std=c++11 main.cpp token.cpp return_value.cpp parser.cpp lexer.cpp interpreter.cpp -o listFunc
+listFunc: main.cpp token.cpp return_value.cpp parser.cpp lexer.cpp interpreter.cpp ListFunc.cpp
+	g++ -std=c++11 -O3 main.cpp token.cpp return_value.cpp parser.cpp lexer.cpp interpreter.cpp ListFunc.cpp -o listFunc
 
 # main2.o: main2.cpp
 # 	g++ -std=c++11 -c main2.cpp

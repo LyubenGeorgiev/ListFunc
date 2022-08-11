@@ -1,0 +1,168 @@
+\hypertarget{struct_default_function_node}{}\doxysection{Default\+Function\+Node Struct Reference}
+\label{struct_default_function_node}\index{DefaultFunctionNode@{DefaultFunctionNode}}
+
+
+Abstract syntax tree with default function.  
+
+
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+Inheritance diagram for Default\+Function\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_default_function_node}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_default_function_node_a26340a6ebd8590141221b6a2aa2695e6}{Default\+Function\+Node}} (const std\+::string \&name, const std\+::function$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$(\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&)$>$ \&func, size\+\_\+t argc)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ \mbox{\hyperlink{struct_default_function_node_a980ac3f7dcabe686c651565161c39d5f}{eval}} (\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&fnc\+Scp) const override
+\begin{DoxyCompactList}\small\item\em Evaluates to \mbox{\hyperlink{struct_value}{Value}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_default_function_node_a3ac4f075192dce38ea91c320da900828}{print}} (std\+::ostream \&out) const override
+\begin{DoxyCompactList}\small\item\em Prints the name. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{struct_default_function_node_a493e87d273bc07a0fbe901354d50f71b}{get\+Argc}} () const override
+\begin{DoxyCompactList}\small\item\em Returns arguments count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::function$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$(\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&)$>$ \mbox{\hyperlink{struct_default_function_node_a8e5847673f0d5e627be7d20458a60c96}{func}}
+\item 
+const size\+\_\+t \mbox{\hyperlink{struct_default_function_node_a79fee9536d9f857b550cc25ed42cbe6c}{argc}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract syntax tree with default function. 
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00149}{149}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_default_function_node_a26340a6ebd8590141221b6a2aa2695e6}\label{struct_default_function_node_a26340a6ebd8590141221b6a2aa2695e6}} 
+\index{DefaultFunctionNode@{DefaultFunctionNode}!DefaultFunctionNode@{DefaultFunctionNode}}
+\index{DefaultFunctionNode@{DefaultFunctionNode}!DefaultFunctionNode@{DefaultFunctionNode}}
+\doxysubsubsection{\texorpdfstring{DefaultFunctionNode()}{DefaultFunctionNode()}}
+{\footnotesize\ttfamily Default\+Function\+Node\+::\+Default\+Function\+Node (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::function$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$(\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&)$>$ \&}]{func,  }\item[{size\+\_\+t}]{argc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00154}{154}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00156         : \mbox{\hyperlink{struct_node}{Node}}(\{Token::Type::FUNC, name, -\/1\}), func(func), argc(argc)}
+\DoxyCodeLine{00157     \{}
+\DoxyCodeLine{00158     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_default_function_node_a980ac3f7dcabe686c651565161c39d5f}\label{struct_default_function_node_a980ac3f7dcabe686c651565161c39d5f}} 
+\index{DefaultFunctionNode@{DefaultFunctionNode}!eval@{eval}}
+\index{eval@{eval}!DefaultFunctionNode@{DefaultFunctionNode}}
+\doxysubsubsection{\texorpdfstring{eval()}{eval()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ Default\+Function\+Node\+::eval (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&}]{fnc\+Scp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Evaluates to \mbox{\hyperlink{struct_value}{Value}}. 
+
+
+
+Implements \mbox{\hyperlink{struct_node_ab6e81480e3edb77e75410cdeff9c03ef}{Node}}.
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00161}{161}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00162     \{}
+\DoxyCodeLine{00163         \textcolor{keywordflow}{return} func(fncScp);}
+\DoxyCodeLine{00164     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_default_function_node_a493e87d273bc07a0fbe901354d50f71b}\label{struct_default_function_node_a493e87d273bc07a0fbe901354d50f71b}} 
+\index{DefaultFunctionNode@{DefaultFunctionNode}!getArgc@{getArgc}}
+\index{getArgc@{getArgc}!DefaultFunctionNode@{DefaultFunctionNode}}
+\doxysubsubsection{\texorpdfstring{getArgc()}{getArgc()}}
+{\footnotesize\ttfamily size\+\_\+t Default\+Function\+Node\+::get\+Argc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns arguments count. 
+
+
+
+Implements \mbox{\hyperlink{struct_node_a50ca714e7aa6099de107e404e2b596f9}{Node}}.
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00173}{173}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00174     \{}
+\DoxyCodeLine{00175         \textcolor{keywordflow}{return} argc;}
+\DoxyCodeLine{00176     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_default_function_node_a3ac4f075192dce38ea91c320da900828}\label{struct_default_function_node_a3ac4f075192dce38ea91c320da900828}} 
+\index{DefaultFunctionNode@{DefaultFunctionNode}!print@{print}}
+\index{print@{print}!DefaultFunctionNode@{DefaultFunctionNode}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Default\+Function\+Node\+::print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Prints the name. 
+
+
+
+Reimplemented from \mbox{\hyperlink{struct_node_a047b8becc718f90499cb7fae34910bd5}{Node}}.
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00167}{167}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00168     \{}
+\DoxyCodeLine{00169         out << \textcolor{stringliteral}{"{}DefaultFunctionNode "{}} << token.data;;}
+\DoxyCodeLine{00170     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_default_function_node_a79fee9536d9f857b550cc25ed42cbe6c}\label{struct_default_function_node_a79fee9536d9f857b550cc25ed42cbe6c}} 
+\index{DefaultFunctionNode@{DefaultFunctionNode}!argc@{argc}}
+\index{argc@{argc}!DefaultFunctionNode@{DefaultFunctionNode}}
+\doxysubsubsection{\texorpdfstring{argc}{argc}}
+{\footnotesize\ttfamily const size\+\_\+t Default\+Function\+Node\+::argc}
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00152}{152}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+\mbox{\Hypertarget{struct_default_function_node_a8e5847673f0d5e627be7d20458a60c96}\label{struct_default_function_node_a8e5847673f0d5e627be7d20458a60c96}} 
+\index{DefaultFunctionNode@{DefaultFunctionNode}!func@{func}}
+\index{func@{func}!DefaultFunctionNode@{DefaultFunctionNode}}
+\doxysubsubsection{\texorpdfstring{func}{func}}
+{\footnotesize\ttfamily const std\+::function$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{struct_value}{Value}}$>$(\mbox{\hyperlink{struct_function_scope}{Function\+Scope}}\&)$>$ Default\+Function\+Node\+::func}
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00151}{151}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parser.\+h\end{DoxyCompactItemize}

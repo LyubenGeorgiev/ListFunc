@@ -1,44 +1,46 @@
 #pragma once
 
-#include "linked_list.hpp"
 #include "return_value.h"
-#include "parser.h"
 
 #include <string>
 #include <unordered_map>
 #include <vector>
 #include <memory>
+#include <functional>
 
 
+struct Node;
+struct FunctionDefinition;
+struct FunctionScope;
+
+//! Stores function definitions
 struct GlobalScope
 {
-    // Checks if a function is defined
-    bool isFunctionDefined(const std::string& name);
+    //! Checks if function is already defined
+    bool isFunctionDefined(const std::string& name, size_t argc);
 
-    // calls the specified function name in the provided execution context
-    std::shared_ptr<Value> callFunction(const std::string& name, FunctionScope& ctx);
+    //! Calls function
+    std::shared_ptr<Value> callFunction(const std::string& name, FunctionScope& fncScp);
 
-    // True if it's a redefinition, false otherwise
+    //! True if it's a redefinition, false otherwise
     bool addFunction(std::shared_ptr<FunctionDefinition> definition);
 
-    // gets the formal parameter count for the function
-    size_t formalParamCountFor(const std::string& functionName);
-
+    //! Loads the pre-defined functions
     void loadDefaultLibrary();
 
 private:
-    std::unordered_map<std::string, std::shared_ptr<FunctionDefinition>> definitions;
+    std::unordered_map<std::string, std::unordered_map<size_t, std::shared_ptr<FunctionDefinition>>> definitions;
+
 };
 
-// The current execution context for the function
-// it can change if we recurse
+//! Stores needed information for function execution
 struct FunctionScope
 {
-    // Parameters moved in order to preserve on memory
     FunctionScope(GlobalScope &globalExecContext,
                   std::shared_ptr<FunctionScope> parentScope,
                   const std::vector<std::shared_ptr<Node>> &parameters) noexcept
         : globalExecContext(globalExecContext),
+          parentScope(parentScope),
           parameters(parameters)
     {
     }
@@ -46,37 +48,32 @@ struct FunctionScope
                   std::shared_ptr<FunctionScope> parentScope,
                   std::vector<std::shared_ptr<Node>>&& parameters) noexcept
         : globalExecContext(globalExecContext),
+          parentScope(parentScope),
           parameters(std::move(parameters))
     {
     }
 
-    // Gets the n-th parameter in the execution context
-    // pretty much a parameter citation functionality,
-    // but the parameters are always kept inside the execution context
+    //! Evals the nth parameter at runtime
     std::shared_ptr<Value> nth(size_t idx) const;
 
-    // Gets the param count
+    //! For lazy evaluation purposes returns head of list
+    std::shared_ptr<Value> headOfList() const;
+    //! For lazy evaluation purposes returns tail of list
+    std::shared_ptr<Value> tailOfList() const;
+
+    //! Gets the parameters count
     size_t paramCount() const noexcept { return parameters.size(); }
 
-    // Accessor for the global execution context
-    GlobalScope& getGlobalScope() noexcept
-    {
-        return globalExecContext;
-    }
+    //! Accessor for the global execution context
+    GlobalScope& getGlobalScope() noexcept { return globalExecContext; }
 
-    // Accessor for the global execution context
-    const GlobalScope& getGlobalScope() const noexcept
-    {
-        return globalExecContext;
-    }
+    //! Accessor for the global execution context
+    const GlobalScope& getGlobalScope() const noexcept { return globalExecContext; }
 
 private:
     GlobalScope& globalExecContext;
 
-    // This is the root cause of eager evaluation
-    // If we change the Value to keep an AST then we can
-    // do some lazy evaluation
-    // const std::vector<std::shared_ptr<Value>> parameters;
+    // We store the parentScope so we can eval the parameters lazy
     std::shared_ptr<FunctionScope> parentScope;
     const std::vector<std::shared_ptr<Node>> parameters;
 

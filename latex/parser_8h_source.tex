@@ -1,0 +1,170 @@
+\hypertarget{parser_8h_source}{}\doxysection{parser.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00003}00003 \textcolor{preprocessor}{\#include "{}lexer.h"{}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}return\_value.h"{}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00006}00006 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00011}00011 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_function_scope}{FunctionScope}};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00014}\mbox{\hyperlink{struct_node}{00014}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_node}{Node}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00016}00016     \mbox{\hyperlink{class_token}{Token}} token;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00018}00018     \textcolor{keyword}{explicit} \mbox{\hyperlink{struct_node}{Node}}(\mbox{\hyperlink{class_token}{Token}} token);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00021}\mbox{\hyperlink{struct_node_ab6e81480e3edb77e75410cdeff9c03ef}{00021}}     \textcolor{keyword}{virtual} std::shared\_ptr<Value> \mbox{\hyperlink{struct_node_ab6e81480e3edb77e75410cdeff9c03ef}{eval}}(\mbox{\hyperlink{struct_function_scope}{FunctionScope}} \&fncScp) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00024}00024     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_node_a047b8becc718f90499cb7fae34910bd5}{print}}(std::ostream\& out) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00027}\mbox{\hyperlink{struct_node_a50ca714e7aa6099de107e404e2b596f9}{00027}}     \textcolor{keyword}{virtual} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_node_a50ca714e7aa6099de107e404e2b596f9}{getArgc}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00029}00029 \};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00032}\mbox{\hyperlink{struct_int_node}{00032}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_int_node}{IntNode}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_node}{Node}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00034}00034     \textcolor{keyword}{explicit} \mbox{\hyperlink{struct_int_node}{IntNode}}(\mbox{\hyperlink{class_token}{Token}} token);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00037}00037     std::shared\_ptr<Value> \mbox{\hyperlink{struct_int_node_ae4311837e9a5807e02ea1b6160bfc1af}{eval}}(\mbox{\hyperlink{struct_function_scope}{FunctionScope}} \&fncScp) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00039}\mbox{\hyperlink{struct_int_node_a64149f802045d89960a85c78a34952a0}{00039}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_int_node_a64149f802045d89960a85c78a34952a0}{getArgc}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00040}00040 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00041}00041         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00042}00042     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00044}00044 \};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00047}\mbox{\hyperlink{struct_double_node}{00047}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_double_node}{DoubleNode}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_node}{Node}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00048}00048 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00049}00049     \textcolor{keyword}{explicit} \mbox{\hyperlink{struct_double_node}{DoubleNode}}(\mbox{\hyperlink{class_token}{Token}} token);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00052}00052     std::shared\_ptr<Value>\mbox{\hyperlink{struct_double_node_a057f2b079a311689d1dc2ee7489971f3}{eval}}(\mbox{\hyperlink{struct_function_scope}{FunctionScope}} \&fncScp) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00054}\mbox{\hyperlink{struct_double_node_a5c25bf3385709ffdc13211505cc49a58}{00054}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_double_node_a5c25bf3385709ffdc13211505cc49a58}{getArgc}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00055}00055 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00056}00056         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00057}00057     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00058}00058 \};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00061}\mbox{\hyperlink{struct_list_literal_node}{00061}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_list_literal_node}{ListLiteralNode}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_node}{Node}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00062}00062 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00063}00063     std::vector<std::shared\_ptr<Node>> contents;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00065}00065     \mbox{\hyperlink{struct_list_literal_node}{ListLiteralNode}}(\mbox{\hyperlink{class_token}{Token}} token, \textcolor{keyword}{const} std::vector<std::shared\_ptr<Node>> \&contents);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00068}00068     std::shared\_ptr<Value> \mbox{\hyperlink{struct_list_literal_node_a3142e6dd5e54d4b510bb3825b7daaa38}{eval}}(\mbox{\hyperlink{struct_function_scope}{FunctionScope}} \&fncScp) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00071}00071     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_list_literal_node_add942f0d76851c7ab5635de946d8cdab}{print}}(std::ostream\& out) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00074}\mbox{\hyperlink{struct_list_literal_node_a4fcad0b4b03d4741ad011d5b13bd6c5e}{00074}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_list_literal_node_a4fcad0b4b03d4741ad011d5b13bd6c5e}{getArgc}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00075}00075 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00076}00076         \textcolor{keywordtype}{size\_t} res = 0;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00077}00077         \textcolor{keywordflow}{for} (std::shared\_ptr<Node> node : contents)}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00078}00078         \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00079}00079             res = std::max(res, node-\/>getArgc());}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00080}00080         \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00081}00081         \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00082}00082     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00083}00083 \};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00086}\mbox{\hyperlink{struct_argument_node}{00086}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_argument_node}{ArgumentNode}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_node}{Node}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00087}00087 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00088}00088     \textcolor{keyword}{explicit} \mbox{\hyperlink{struct_argument_node}{ArgumentNode}}(\mbox{\hyperlink{class_token}{Token}} token);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00091}00091     std::shared\_ptr<Value> \mbox{\hyperlink{struct_argument_node_a0af4b5d2eef88fb356e9e96d2e38dac9}{eval}}(\mbox{\hyperlink{struct_function_scope}{FunctionScope}} \&fncScp) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00094}\mbox{\hyperlink{struct_argument_node_a9880e7a1e615e1ac16d6f19adde2327c}{00094}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_argument_node_a9880e7a1e615e1ac16d6f19adde2327c}{getArgc}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00095}00095 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00096}00096         \textcolor{keywordflow}{return} std::stoi(token.data) + 1;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00097}00097     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00098}00098 \};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00101}\mbox{\hyperlink{struct_function_definition}{00101}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_function_definition}{FunctionDefinition}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_node}{Node}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00102}00102 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00103}00103     \textcolor{keyword}{const} std::shared\_ptr<Node> definition;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00105}00105     \mbox{\hyperlink{struct_function_definition}{FunctionDefinition}}(\mbox{\hyperlink{class_token}{Token}} token, \textcolor{keyword}{const} std::shared\_ptr<Node> definition)}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00106}00106         : \mbox{\hyperlink{struct_node}{Node}}(token), definition(definition) \{\}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00109}00109     std::shared\_ptr<Value> \mbox{\hyperlink{struct_function_definition_aeee4e2e5faa17715363656667a732abc}{eval}}(\mbox{\hyperlink{struct_function_scope}{FunctionScope}} \&fncScp) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00112}00112     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_function_definition_a50b1dde5f6115732801d9f0f935e1732}{print}}(std::ostream\& out) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00115}\mbox{\hyperlink{struct_function_definition_a1f2f489eb2104279ce7ae2370a5511c4}{00115}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_function_definition_a1f2f489eb2104279ce7ae2370a5511c4}{getArgc}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00116}00116 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00117}00117         \textcolor{keywordflow}{return} definition-\/>getArgc();}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00118}00118     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00119}00119 \};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00122}\mbox{\hyperlink{struct_function_application}{00122}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_function_application}{FunctionApplication}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_node}{Node}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00123}00123 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00124}00124     \textcolor{keyword}{const} std::vector<std::shared\_ptr<Node>> arguments;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00126}00126     \mbox{\hyperlink{struct_function_application}{FunctionApplication}}(\mbox{\hyperlink{class_token}{Token}} token, \textcolor{keyword}{const} std::vector<std::shared\_ptr<Node>> \&arguments)}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00127}00127         : \mbox{\hyperlink{struct_node}{Node}}(token), arguments(arguments) \{\}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00128}00128     \mbox{\hyperlink{struct_function_application}{\string~FunctionApplication}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00131}00131     std::shared\_ptr<Value> \mbox{\hyperlink{struct_function_application_a6dd4df2ae7e4977925cadbceb6b0b63a}{eval}}(\mbox{\hyperlink{struct_function_scope}{FunctionScope}} \&parentScp) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00134}00134     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_function_application_ab10c70600f1180adacef83832b98c6fb}{print}}(std::ostream\& out) \textcolor{keyword}{const override};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00137}\mbox{\hyperlink{struct_function_application_a83580014e687a4553a05739652bf46ca}{00137}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_function_application_a83580014e687a4553a05739652bf46ca}{getArgc}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00138}00138 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00139}00139         \textcolor{keywordtype}{size\_t} res = 0;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00140}00140         \textcolor{keywordflow}{for} (std::shared\_ptr<Node> node : arguments)}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00141}00141         \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00142}00142             res = std::max(res, node-\/>getArgc());}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00143}00143         \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00144}00144         \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00145}00145     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00146}00146 \};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00149}\mbox{\hyperlink{struct_default_function_node}{00149}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_default_function_node}{DefaultFunctionNode}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_node}{Node}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00150}00150 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00151}00151     \textcolor{keyword}{const} std::function<std::shared\_ptr<Value>(\mbox{\hyperlink{struct_function_scope}{FunctionScope}}\&)> func;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00152}00152     \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} argc;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00154}00154     \mbox{\hyperlink{struct_default_function_node}{DefaultFunctionNode}}(\textcolor{keyword}{const} std::string \&name,}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00155}00155         \textcolor{keyword}{const} std::function<std::shared\_ptr<Value>(\mbox{\hyperlink{struct_function_scope}{FunctionScope}}\&)>\& func, \textcolor{keywordtype}{size\_t} argc)}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00156}00156         : \mbox{\hyperlink{struct_node}{Node}}(\{Token::Type::FUNC, name, -\/1\}), func(func), argc(argc)}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00157}00157     \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00158}00158     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00161}\mbox{\hyperlink{struct_default_function_node_a980ac3f7dcabe686c651565161c39d5f}{00161}}     std::shared\_ptr<Value> \mbox{\hyperlink{struct_default_function_node_a980ac3f7dcabe686c651565161c39d5f}{eval}}(\mbox{\hyperlink{struct_function_scope}{FunctionScope}} \&fncScp)\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00162}00162 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00163}00163         \textcolor{keywordflow}{return} func(fncScp);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00164}00164     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00167}\mbox{\hyperlink{struct_default_function_node_a3ac4f075192dce38ea91c320da900828}{00167}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_default_function_node_a3ac4f075192dce38ea91c320da900828}{print}}(std::ostream\& out)\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00168}00168 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00169}00169         out << \textcolor{stringliteral}{"{}DefaultFunctionNode "{}} << token.data;;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00170}00170     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00173}\mbox{\hyperlink{struct_default_function_node_a493e87d273bc07a0fbe901354d50f71b}{00173}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_default_function_node_a493e87d273bc07a0fbe901354d50f71b}{getArgc}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00174}00174 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00175}00175         \textcolor{keywordflow}{return} argc;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00176}00176     \}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00177}00177 \};}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00180}\mbox{\hyperlink{class_parser}{00180}} \textcolor{keyword}{class }\mbox{\hyperlink{class_parser}{Parser}}}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00181}00181 \{}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00182}00182 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00183}00183     \mbox{\hyperlink{class_parser}{Parser}}(std::vector<Token>::iterator begin);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00186}00186     std::shared\_ptr<Node> \mbox{\hyperlink{class_parser_afe3391402dbeb1ef75fb75206183d820}{parse}}(std::ostream\& out);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00188}00188 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00189}00189     std::vector<Token>::iterator \_currentToken;}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00192}00192     std::shared\_ptr<Node> expr(std::ostream\& out);}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00194}00194     \textcolor{keywordtype}{bool} eof();}
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{parser_8h_source_l00196}00196 \};}
+
+\end{DoxyCode}

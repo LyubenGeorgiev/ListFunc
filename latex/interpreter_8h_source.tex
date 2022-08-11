@@ -1,0 +1,73 @@
+\hypertarget{interpreter_8h_source}{}\doxysection{interpreter.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00003}00003 \textcolor{preprocessor}{\#include "{}return\_value.h"{}}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00005}00005 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00006}00006 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00009}00009 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00012}00012 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_node}{Node}};}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00013}00013 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_function_definition}{FunctionDefinition}};}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00014}00014 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_function_scope}{FunctionScope}};}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00017}\mbox{\hyperlink{struct_global_scope}{00017}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_global_scope}{GlobalScope}}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00020}00020     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_global_scope_a63fbf5f36d677952aa9d8c71a60ed508}{isFunctionDefined}}(\textcolor{keyword}{const} std::string\& name, \textcolor{keywordtype}{size\_t} argc);}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00023}00023     std::shared\_ptr<Value> \mbox{\hyperlink{struct_global_scope_aa64b14db8200b37f36c454a021b50db2}{callFunction}}(\textcolor{keyword}{const} std::string\& name, \mbox{\hyperlink{struct_function_scope}{FunctionScope}}\& fncScp);}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00026}00026     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_global_scope_ac87ceba841b79af9041763efb54a9b30}{addFunction}}(std::shared\_ptr<FunctionDefinition> definition);}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00029}00029     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_global_scope_ad6db8fd7cf2b8b9dd481fe88bb50653d}{loadDefaultLibrary}}();}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00031}00031 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00032}00032     std::unordered\_map<std::string, std::unordered\_map<size\_t, std::shared\_ptr<FunctionDefinition>>> definitions;}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00034}00034 \};}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00037}\mbox{\hyperlink{struct_function_scope}{00037}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_function_scope}{FunctionScope}}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00039}00039     \mbox{\hyperlink{struct_function_scope}{FunctionScope}}(\mbox{\hyperlink{struct_global_scope}{GlobalScope}} \&globalExecContext,}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00040}00040                   std::shared\_ptr<FunctionScope> parentScope,}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00041}00041                   \textcolor{keyword}{const} std::vector<std::shared\_ptr<Node>> \&parameters) noexcept}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00042}00042         : globalExecContext(globalExecContext),}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00043}00043           parentScope(parentScope),}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00044}00044           parameters(parameters)}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00045}00045     \{}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00046}00046     \}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00047}00047     \mbox{\hyperlink{struct_function_scope}{FunctionScope}}(\mbox{\hyperlink{struct_global_scope}{GlobalScope}} \&globalExecContext,}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00048}00048                   std::shared\_ptr<FunctionScope> parentScope,}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00049}00049                   std::vector<std::shared\_ptr<Node>>\&\& parameters) noexcept}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00050}00050         : globalExecContext(globalExecContext),}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00051}00051           parentScope(parentScope),}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00052}00052           parameters(std::move(parameters))}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00053}00053     \{}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00054}00054     \}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00057}00057     std::shared\_ptr<Value> \mbox{\hyperlink{struct_function_scope_a58366310b2c69a3d655b1a68626dda2e}{nth}}(\textcolor{keywordtype}{size\_t} idx) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00060}00060     std::shared\_ptr<Value> \mbox{\hyperlink{struct_function_scope_aa9377a769ea974faba8eaa93e497b667}{headOfList}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00062}00062     std::shared\_ptr<Value> \mbox{\hyperlink{struct_function_scope_ae1dcc436bb3b5dba7faf256f759e2a65}{tailOfList}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00065}\mbox{\hyperlink{struct_function_scope_aaeeef1de68ae96554b445f780689eee7}{00065}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_function_scope_aaeeef1de68ae96554b445f780689eee7}{paramCount}}() const noexcept \{ \textcolor{keywordflow}{return} parameters.size(); \}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00068}\mbox{\hyperlink{struct_function_scope_aea11e674aa27844aba0a016f6f355154}{00068}}     \mbox{\hyperlink{struct_global_scope}{GlobalScope}}\& \mbox{\hyperlink{struct_function_scope_aea11e674aa27844aba0a016f6f355154}{getGlobalScope}}() noexcept \{ \textcolor{keywordflow}{return} globalExecContext; \}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00071}\mbox{\hyperlink{struct_function_scope_ae25a6b84e31f5a716ea8c5ebb0edff4a}{00071}}     \textcolor{keyword}{const} \mbox{\hyperlink{struct_global_scope}{GlobalScope}}\& \mbox{\hyperlink{struct_function_scope_ae25a6b84e31f5a716ea8c5ebb0edff4a}{getGlobalScope}}() const noexcept \{ \textcolor{keywordflow}{return} globalExecContext; \}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00073}00073 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00074}00074     \mbox{\hyperlink{struct_global_scope}{GlobalScope}}\& globalExecContext;}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00076}00076     \textcolor{comment}{// We store the parentScope so we can eval the parameters lazy}}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00077}00077     std::shared\_ptr<FunctionScope> parentScope;}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00078}00078     \textcolor{keyword}{const} std::vector<std::shared\_ptr<Node>> parameters;}
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{interpreter_8h_source_l00080}00080 \};}
+
+\end{DoxyCode}

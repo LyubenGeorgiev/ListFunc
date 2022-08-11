@@ -1,0 +1,2 @@
+test: main.test.cpp ../token.cpp ../return_value.cpp ../parser.cpp ../lexer.cpp ../interpreter.cpp
+	g++ -std=c++11 -O3 main.test.cpp ../token.cpp ../return_value.cpp ../parser.cpp ../lexer.cpp ../interpreter.cpp -o test

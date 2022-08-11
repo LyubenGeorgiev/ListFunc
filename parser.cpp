@@ -4,14 +4,14 @@
 
 
 Node::Node(Token token)
-    : _token(token)
+    : token(token)
 {
     ;
 }
 
 void Node::print(std::ostream& out) const
 {
-    out << _token;
+    out << token;
 }
 
 IntNode::IntNode(Token token)
@@ -20,16 +20,11 @@ IntNode::IntNode(Token token)
     ;
 }
 
-std::shared_ptr<Value> IntNode::eval(FunctionScope &execContext) const
+std::shared_ptr<Value> IntNode::eval(FunctionScope &fncScp) const
 {
     return std::dynamic_pointer_cast<Value>(
-        std::make_shared<IntValue>(std::stoi(_token._data))
+        std::make_shared<IntValue>(std::stoi(token.data))
     );
-}
-
-std::shared_ptr<Node> IntNode::clone() const
-{
-    return std::dynamic_pointer_cast<Node>(std::make_shared<IntNode>(_token));
 }
 
 DoubleNode::DoubleNode(Token token)
@@ -38,16 +33,11 @@ DoubleNode::DoubleNode(Token token)
     ;
 }
 
-std::shared_ptr<Value> DoubleNode::eval(FunctionScope &execContext) const
+std::shared_ptr<Value> DoubleNode::eval(FunctionScope &fncScp) const
 {
     return std::dynamic_pointer_cast<Value>(
-        std::make_shared<RealValue>(std::stod(_token._data))
+        std::make_shared<RealValue>(std::stod(token.data))
     );
-}
-
-std::shared_ptr<Node> DoubleNode::clone() const
-{
-    return std::dynamic_pointer_cast<Node>(std::make_shared<DoubleNode>(_token));
 }
 
 ArgumentNode::ArgumentNode(Token token)
@@ -56,29 +46,24 @@ ArgumentNode::ArgumentNode(Token token)
     ;
 }
 
-std::shared_ptr<Value> ArgumentNode::eval(FunctionScope &execContext) const
+std::shared_ptr<Value> ArgumentNode::eval(FunctionScope &fncScp) const
 {
-    return execContext.nth(std::stoi(_token._data));
+    return fncScp.nth(std::stoi(token.data));
 }
 
-std::shared_ptr<Node> ArgumentNode::clone() const
-{
-    return std::dynamic_pointer_cast<Node>(std::make_shared<ArgumentNode>(_token));
-}
-
-ListLiteralNode::ListLiteralNode(Token token, const linked_list<std::shared_ptr<Node>> &contents)
+ListLiteralNode::ListLiteralNode(Token token, const std::vector<std::shared_ptr<Node>> &contents)
     : Node(token), contents(contents)
 {
     ;
 }
 
-std::shared_ptr<Value> ListLiteralNode::eval(FunctionScope &execContext) const
+std::shared_ptr<Value> ListLiteralNode::eval(FunctionScope &fncScp) const
 {
-    linked_list<std::shared_ptr<Value>> list;
+    std::vector<std::shared_ptr<Value>> list;
 
     for (std::shared_ptr<Node> item : contents)
     {
-        list.push_back(item->eval(execContext));
+        list.push_back(item->eval(fncScp));
     }
 
     return std::dynamic_pointer_cast<Value>(
@@ -88,7 +73,7 @@ std::shared_ptr<Value> ListLiteralNode::eval(FunctionScope &execContext) const
 
 void ListLiteralNode::print(std::ostream& out) const
 {
-    out << "{ListLiteral: " << _token;
+    out << "{ListLiteral: " << token;
 
 	for (std::shared_ptr<Node> n : contents)
 	{
@@ -98,68 +83,33 @@ void ListLiteralNode::print(std::ostream& out) const
 	out << '}';
 }
 
-std::shared_ptr<Node> ListLiteralNode::clone() const
-{
-    linked_list<std::shared_ptr<Node>> list;
-    for (std::shared_ptr<Node> item : contents)
-    {
-        list.push_back(item->clone());
-    }
-
-    return std::dynamic_pointer_cast<Node>(
-        std::make_shared<ListLiteralNode>(_token, list)
-    );
-}
-
-std::shared_ptr<Value> FunctionDefinition::eval(FunctionScope &execContext) const
+std::shared_ptr<Value> FunctionDefinition::eval(FunctionScope &fncScp) const
 {
     return std::dynamic_pointer_cast<Value>(std::make_shared<IntValue>(
-        (int)execContext.getGlobalScope().addFunction(std::dynamic_pointer_cast<FunctionDefinition>(clone()))
+        (int)fncScp.getGlobalScope().addFunction(std::make_shared<FunctionDefinition>(*this))
     ));
 }
 
 void FunctionDefinition::print(std::ostream& out) const
 {
-    out << "{FunctionDefinition: " << _token << ", ";
+    out << "{FunctionDefinition: " << token << ", ";
 
 	out << "Definition: ";
-    _definition->print(out);
+    definition->print(out);
 
 	out << '}';
 }
 
-std::shared_ptr<Node> FunctionDefinition::clone() const
+std::shared_ptr<Value> FunctionApplication::eval(FunctionScope &parentScope) const
 {
-    return std::dynamic_pointer_cast<Node>(
-        std::make_shared<FunctionDefinition>(_token, _definition->clone(), _argc)
-    );
-}
-
-std::shared_ptr<Value> FunctionApplication::eval(FunctionScope &execContext) const
-{
-    // std::vector<std::shared_ptr<Value>> args;
-
-    // for (std::shared_ptr<Node> arg : arguments)
-    // {
-    //     args.push_back(arg->eval(execContext));
-    // }
-
-    FunctionScope localScope(execContext.getGlobalScope(), std::make_shared<FunctionScope>(execContext), arguments);
-
-
-    // if (localExecContext.paramCount() <
-    //    execContext.getGlobalExecutionContext().formalParamCountFor(_token._data))
-    // {
-    //    assert(false && "Exception");
-    //    return nullptr;
-    // }
-
-    return execContext.getGlobalScope().callFunction(_token._data, localScope);
+    FunctionScope localScope(parentScope.getGlobalScope(), std::make_shared<FunctionScope>(parentScope), arguments);
+    
+    return parentScope.getGlobalScope().callFunction(token.data, localScope);
 }
 
 void FunctionApplication::print(std::ostream& out) const
 {
-    out << "{FunctionApplication: " << _token << ", ";
+    out << "{FunctionApplication: " << token << ", ";
 
 	out << "Arguments: {";
     for (std::shared_ptr<Node> arg : arguments)
@@ -171,19 +121,6 @@ void FunctionApplication::print(std::ostream& out) const
 	out << "}}";
 }
 
-std::shared_ptr<Node> FunctionApplication::clone() const
-{
-    std::vector<std::shared_ptr<Node>> args;
-    for (std::shared_ptr<Node> arg : arguments)
-    {
-        args.push_back(arg->clone());
-    }
-
-    return std::dynamic_pointer_cast<Node>(
-        std::make_shared<FunctionApplication>(_token, args)
-    );
-}
-
 std::shared_ptr<Node> Parser::parse(std::ostream& out)
 {
     std::shared_ptr<Node> ast = expr(out);
@@ -193,13 +130,12 @@ std::shared_ptr<Node> Parser::parse(std::ostream& out)
         return ast;
     }
 
-    std::cout << "Colud not parse the input!\n";
-    return nullptr;
+    throw std::runtime_error("Colud not parse the input!");
 }
 
 bool Parser::eof()
 {
-    return _currentToken->_type == Token::Type::eof;
+    return _currentToken->type == Token::Type::eof;
 }
 
 Parser::Parser(std::vector<Token>::iterator begin)
@@ -212,39 +148,41 @@ std::shared_ptr<Node> Parser::expr(std::ostream& out)
 {
     if (eof())
     {
-        out << "Insufficient input provided.\n";
-
-        return nullptr;
+        throw std::runtime_error("Insufficient input provided.\n");
     }
 
     // Handling wrong input
-    if (_currentToken->_type == Token::Type::open_round)
+    if (_currentToken->type == Token::Type::OPEN_ROUND)
     {
-        out << "Unexpcted '(' occured, missing identifier before it.\nInfo: " << *_currentToken << '\n';
+        std::string err = "Unexpected '(' occured, missing identifier before it.\nInfo: ";
+        err += _currentToken->print();
 
-        return nullptr;
+        throw std::runtime_error(err);
     }
-    if (_currentToken->_type == Token::Type::close_round)
+    if (_currentToken->type == Token::Type::CLOSE_ROUND)
     {
-        out << "Unexpcted ')' occured.\nInfo: " << *_currentToken << '\n';
+        std::string err = "Unexpected ')' occured.\nInfo: ";
+        err += _currentToken->print();
 
-        return nullptr;
+        throw std::runtime_error(err);
     }
-    if (_currentToken->_type == Token::Type::close_square)
+    if (_currentToken->type == Token::Type::CLOSE_SQUARE)
     {
-        out << "Unexpcted ']' occured.\nInfo: " << *_currentToken << '\n';
+        std::string err = "Unexpected ']' occured.\nInfo: ";
+        err += _currentToken->print();
 
-        return nullptr;
+        throw std::runtime_error(err);
     }
-    if (_currentToken->_type == Token::Type::comma)
+    if (_currentToken->type == Token::Type::COMMA)
     {
-        out << "Unexpcted ',' occured.\nInfo: " << *_currentToken << '\n';
+        std::string err = "Unexpected ',' occured.\nInfo: ";
+        err += _currentToken->print();
 
-        return nullptr;
+        throw std::runtime_error(err);
     }
 
     // Handle arguments
-    if (_currentToken->_type == Token::Type::arg)
+    if (_currentToken->type == Token::Type::ARG)
     {
         Token tempToken = *_currentToken;
 
@@ -255,7 +193,7 @@ std::shared_ptr<Node> Parser::expr(std::ostream& out)
 
 
     // Parsing Int Literal
-    if (_currentToken->_type == Token::Type::kw_int)
+    if (_currentToken->type == Token::Type::KW_INT)
     {
         Token tempToken = *_currentToken;
 
@@ -265,7 +203,7 @@ std::shared_ptr<Node> Parser::expr(std::ostream& out)
     }
 
     // Parsing Double Literal
-    if (_currentToken->_type == Token::Type::kw_double)
+    if (_currentToken->type == Token::Type::KW_DOUBLE)
     {
         Token tempToken = *_currentToken;
 
@@ -275,37 +213,39 @@ std::shared_ptr<Node> Parser::expr(std::ostream& out)
     }
 
     // Parsing List Literal
-    if (_currentToken->_type == Token::Type::open_square)
+    if (_currentToken->type == Token::Type::OPEN_SQUARE)
     {
         Token returnToken = *_currentToken;
 
         ++_currentToken;
 
-        linked_list<std::shared_ptr<Node>> arguments;
+        std::vector<std::shared_ptr<Node>> arguments;
 
-        while(_currentToken->_type != Token::Type::eof && _currentToken->_type != Token::Type::close_square)
+        while(_currentToken->type != Token::Type::eof && _currentToken->type != Token::Type::CLOSE_SQUARE)
         {
             std::shared_ptr<Node> elem = expr(out);
 
             if (!elem)
             {
-                std::cout << "Parsing List Literal error occured at: " << returnToken << '\n';
+                std::string err = "Parsing List Literal error occured at: ";
+                err += _currentToken->print();
 
-                return nullptr;
+                throw std::runtime_error(err);
             }
 
             arguments.push_back(elem);
         }
 
-        if (_currentToken->_type == Token::Type::close_square)
+        if (_currentToken->type == Token::Type::CLOSE_SQUARE)
         {
             ++_currentToken;
             return std::dynamic_pointer_cast<Node>(std::make_shared<ListLiteralNode>(returnToken, arguments));
         }
 
-        std::cout << "Expected ']' but got: " << returnToken << '\n';
+        std::string err = "Expected ']' but got: ";
+        err += returnToken.print();
 
-        return nullptr;
+        throw std::runtime_error(err);
     }
 
     
@@ -316,13 +256,14 @@ std::shared_ptr<Node> Parser::expr(std::ostream& out)
     
     if (eof())
     {
-        out << "Insufficient input after identifier: " << f;
+        std::string err = "Insufficient input after identifier: ";
+        err += f.print();
 
-        return nullptr;
+        throw std::runtime_error(err);
     }
 
     // We have function definition definition
-    if (_currentToken->_type == Token::Type::arrow)
+    if (_currentToken->type == Token::Type::ARROW)
     {
         ++_currentToken;
 
@@ -330,19 +271,18 @@ std::shared_ptr<Node> Parser::expr(std::ostream& out)
 
         if (definition == nullptr)
         {
-            out << "Problem while parsing function definition\n";
-
-            return nullptr;
+            throw std::runtime_error("Problem while parsing function definition\n");
         }
 
         return std::dynamic_pointer_cast<Node>(std::make_shared<FunctionDefinition>(f, definition));
     }
 
-    if (_currentToken->_type != Token::Type::open_round)
+    if (_currentToken->type != Token::Type::OPEN_ROUND)
     {
-        out << "Expected '(' but instead got: " << *_currentToken << '\n';
+        std::string err = "Expected '(' but instead got: ";
+        err += _currentToken->print();
 
-        return nullptr;
+        throw std::runtime_error(err);
     }
 
     ++_currentToken;
@@ -350,38 +290,37 @@ std::shared_ptr<Node> Parser::expr(std::ostream& out)
     std::vector<std::shared_ptr<Node>> args;
     bool hasMoreArgs = true;
 
-    while (!eof() && _currentToken->_type != Token::Type::close_round && hasMoreArgs)
+    while (!eof() && _currentToken->type != Token::Type::CLOSE_ROUND && hasMoreArgs)
     {
         std::shared_ptr<Node> arg = expr(out);
 
-        if (arg.get() == nullptr || _currentToken->_type == Token::Type::eof)
+        if (arg.get() == nullptr || _currentToken->type == Token::Type::eof)
         {
-            out << "Problem while parsing function call. Info: " << f << '\n';
+            std::string err = "Problem while parsing function call. Info: ";
+            err += f.print();
 
-            return nullptr;
+            throw std::runtime_error(err);
         }
 
         args.push_back(arg);
 
-        hasMoreArgs = _currentToken->_type == Token::Type::comma;
+        hasMoreArgs = _currentToken->type == Token::Type::COMMA;
         if (hasMoreArgs)
         {
             ++_currentToken;
         }
     }
 
-    if (_currentToken->_type != Token::Type::close_round)
+    if (_currentToken->type != Token::Type::CLOSE_ROUND)
     {
-        out << "Expected ')' but instead got: " << *_currentToken << '\n';
+        std::string err = "Expected ')' but instead got: ";
+        err += _currentToken->print();
 
-        return nullptr;
+        throw std::runtime_error(err);
     }
 
     ++_currentToken;
 
     // Successfully parsed function call
     return std::dynamic_pointer_cast<Node>(std::make_shared<FunctionApplication>(f, args));
-
-    std::cout << "Parsing function call failed\n";
-    return nullptr;
 }

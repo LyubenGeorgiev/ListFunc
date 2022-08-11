@@ -1,0 +1,82 @@
+\hypertarget{struct_list_value}{}\doxysection{List\+Value Struct Reference}
+\label{struct_list_value}\index{ListValue@{ListValue}}
+
+
+Class for lists.  
+
+
+
+
+{\ttfamily \#include $<$return\+\_\+value.\+h$>$}
+
+Inheritance diagram for List\+Value\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{struct_list_value}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_list_value_a44b082362ed39515b2c914ffdc5f0004}{List\+Value}} (Value\+::\+Type type)
+\item 
+virtual std\+::string \mbox{\hyperlink{struct_list_value_af3d6c44b0cce71ce3db3f38858c574a1}{to\+String}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Gets the string representation of the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class for lists. 
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00059}{59}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_list_value_a44b082362ed39515b2c914ffdc5f0004}\label{struct_list_value_a44b082362ed39515b2c914ffdc5f0004}} 
+\index{ListValue@{ListValue}!ListValue@{ListValue}}
+\index{ListValue@{ListValue}!ListValue@{ListValue}}
+\doxysubsubsection{\texorpdfstring{ListValue()}{ListValue()}}
+{\footnotesize\ttfamily List\+Value\+::\+List\+Value (\begin{DoxyParamCaption}\item[{Value\+::\+Type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00061}{61}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061                               : \mbox{\hyperlink{struct_value}{Value}}(type)}
+\DoxyCodeLine{00062     \{}
+\DoxyCodeLine{00063         \textcolor{keywordflow}{if} (type != Value::Type::LIST\_LITERAL \&\& type != Value::Type::INFINITE\_LIST)}
+\DoxyCodeLine{00064         \{}
+\DoxyCodeLine{00065             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}A list can be either finite or infinite!"{}});}
+\DoxyCodeLine{00066         \}}
+\DoxyCodeLine{00067     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_list_value_af3d6c44b0cce71ce3db3f38858c574a1}\label{struct_list_value_af3d6c44b0cce71ce3db3f38858c574a1}} 
+\index{ListValue@{ListValue}!toString@{toString}}
+\index{toString@{toString}!ListValue@{ListValue}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily virtual std\+::string List\+Value\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Gets the string representation of the list. 
+
+
+
+Implements \mbox{\hyperlink{struct_value_ae71e0ce1d445e3d9b9775cd415e88d58}{Value}}.
+
+
+
+Implemented in \mbox{\hyperlink{struct_list_literal_value_a40aedb70e05b38f95f78d55515ab7d53}{List\+Literal\+Value}}, and \mbox{\hyperlink{struct_infinite_list_value_a1f154ea00ee252d53febd27de81ad005}{Infinite\+List\+Value}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+return\+\_\+value.\+h\end{DoxyCompactItemize}

@@ -1,217 +1,32 @@
-#include "interpreter.h"
-#include "lexer.h"
-#include "parser.h"
-#include "return_value.h"
+#include "ListFunc.h"
 
-#include <fstream>
-#include <iostream>
-#include <list>
+// pow -> if (eq(#1, 0), 1, if(mod(#1,2), mul(#0, pow(mul(#0, #0), div(#1, 2))), pow(mul(#0, #0), div(#1, 2))))
+// fib -> int(div(sub(pow(add(1, sqrt(5)), #0), pow(sub(1, sqrt(5)), #0)), mul(pow(2, #0), sqrt(5))))
+// fact -> if(eq(#0, 1), 1, mul(#0, fact(sub(#0,1))))
+// fib -> if (le(#0, 2), #0, add(fib(sub(#0,1)), fib(sub(#0,2))))
 
+// not -> nand(#0, 1)
+// and -> not(nand(#0, #1))
+// divisors -> concat([2], list(3, 2, div(int(sqrt(#0)), 2)))
+// containsDevisors -> if(length(#0), if(mod(#1,int(head(#0))), containsDevisors(tail(#0), #1), 1), 0)
+// isPrime -> if(eq(#0, 2), 1, not(containsDevisors(divisors(#0), #0)))
+// filterPrimes -> if(length(#0), if(isPrime(int(head(#0))), concat([head(#0)], filterPrimes(tail(#0))), filterPrimes(tail(#0))), [])
+// primesTo -> filterPrimes(concat([2], list(3, 1, sub(#0, 2))))
 
-int interactiveMode(GlobalScope &globalExecContext)
-{
-    std::string line;
-
-    while (true)
-    {
-        std::cout << "user>>";
-        std::getline(std::cin, line);
-        if (line == "exit")
-        {
-            break;
-        }
-        Lexer l(line);
-        std::vector<Token> tokens = l.lex();
-        // for (Token t : tokens)
-        // {
-        //     std::cout << t << '\n';
-        // }
-        Parser p(tokens.begin());
-        std::shared_ptr<Node> res = p.parse(std::cout);
-        // res->print(std::cout);
-        // std::cout << '\n';
-        
-        FunctionScope execContext(globalExecContext, nullptr, std::vector<std::shared_ptr<Node>>());
-
-        std::shared_ptr<Value> evalResult = res->eval(execContext);
-        if (evalResult)
-            std::cout << "result> " << evalResult->toString() << std::endl;
-    }
-
-    return 0;
-}
+// hanoi -> if(eq(#0, 0), 0, head(tail(concat([hanoi(sub(#0,1), #1, #3, #2) write([#0 #1 #2]) hanoi(sub(#0,1), #3, #2, #1)], []))))
+// min -> if(#0, if(nand(nand(#1, le(head(#0), head(#1))), 1), min(tail(#0), concat([head(#0)], #1)), min(tail(#0), concat(#1, [head(#0)]))), #1)
+// sort -> if(#0, concat([head(min(#0, []))], sort(tail(min(#0, [])))), [])
 
 int main(int argc, const char** argv)
 {
+    if (argc == 1) // Run the program
+    {
+        return ListFunc::getInstance().run();
+    }
+    else if (argc == 2) // Run from file
+    {
+        return ListFunc::getInstance().run(argv[1]);
+    }
     
-    GlobalScope globalExecCtx;
-    globalExecCtx.loadDefaultLibrary();
-    return interactiveMode(globalExecCtx);
+    return -1;
 }
-
-// test -> if(#0, add(#1, 1), 0)
-
-// int main(/*int argc, const char** argv*/)
-//{
-//    try
-//    {
-//        // std::list<funclang::Token> tokens = funclang::lex("123");
-//        // funclang::ParsingContext ctx(std::move(tokens));
-//        // funclang::RealLiteralParser p;
-//
-//        // funclang::Parser::ParseResult parseResult = p.parse(ctx);
-//        // ctx.consumeTokenCnt(parseResult.numConsumedTokens);
-//
-//        // assert(ctx.hasReachedEnd());
-//        // assert(parseResult.parsedAST->evaluate()->type ==
-//        //       funclang::ValueBase::Type::REAL_NUMBER);
-//
-//        // std::vector<SelfCleaningPtr<AST>> sub;
-//        //// AST* _1 = new IntLiteralAST(1);
-//        // AST* _2 = new RealLiteralAST(2);
-//        // AST* _3 = new IntLiteralAST(3);
-//        // AST* _4 = new RealLiteralAST(4);
-//
-//        // sub.emplace_back(new IntLiteralAST(0));
-//        // sub.emplace_back(new IntLiteralAST(1));
-//        // sub.emplace_back(_2);
-//        // sub.emplace_back(_3);
-//        // sub.emplace_back(_4);
-//
-//        // FiniteListValue flv(std::move(sub));
-//
-//        // printf("%s", flv.toString().c_str());
-//
-//        // ----------------
-//
-//        // const std::string src =
-//        //    "[asd(), 23, \n\n\n\n\n\n\n\n\n\n"
-//        //    "[23.0, 111]] 123asdasdasdasd asdasdads";
-//        // std::list<Token> tokens = lex(src);
-//
-//        // ListLiteralParser p;
-//        // Parser::ParseResult parseResult =
-//        p.parse(ParsingContext(std::move(tokens)));
-//
-//        // ----------------
-//
-//        // const std::string source = "#2";
-//
-//        // ParsingContext parsingCtx(lex(source));
-//
-//        // Parser::ParseResult parseRes =
-//        //    ParameterCitationParser().parse(parsingCtx);
-//
-//        // parsingCtx.consumeTokenCnt(parseRes.numConsumedTokens);
-//        // assert(parsingCtx.hasReachedEnd());
-//
-//        // GlobalExecutionContext globalExecCtx;
-//
-//        // std::vector<SelfCleaningPtr<Value>> params;
-//        // params.emplace_back(new IntValue(0));
-//        // params.emplace_back(new IntValue(2));
-//        // params.emplace_back(new IntValue(4));
-//        // params.emplace_back(new IntValue(6));
-//
-//        // ExecutionContext execCtx(globalExecCtx, std::move(params));
-//
-//        // SelfCleaningPtr<Value> execRes =
-//        // parseRes.parsedAST->evaluate(execCtx);
-//
-//        // printf("%s", execRes->toString().c_str());
-//
-//        // ------------------
-//
-//        // const std::string firstSrc = "first -> #0";
-//        // const std::string zeroSrc = "zero -> 0";
-//
-//        // FunctionDefinitionAST first("first", 2, new
-//        ParameterCitationAST(1));
-//
-//        // GlobalExecutionContext globalExecContext;
-//        //// bool redefinition = globalExecContext.addFunction(first);
-//        //// assert(!redefinition);
-//
-//        // ExecutionContext execCtx(globalExecContext,
-//        //                         std::vector<SelfCleaningPtr<Value>>());
-//
-//        // printf("Definition evaluation: %s\n",
-//        //       first.evaluate(execCtx)->toString().c_str());
-//
-//        // std::vector<SelfCleaningPtr<Value>> params;
-//        // params.emplace_back(new IntValue(123));
-//        // params.emplace_back(new IntValue(456));
-//
-//        // std::vector<SelfCleaningPtr<AST>> paramExpressions;
-//        // paramExpressions.emplace_back(new ParameterCitationAST(0));
-//        // paramExpressions.emplace_back(new ParameterCitationAST(1));
-//
-//        // FunctionCallAST call("first", std::move(paramExpressions));
-//        //// first(#0, #1)
-//
-//        // ExecutionContext callCtx(globalExecContext, std::move(params));
-//
-//        // printf("Call: %s\n", call.evaluate(callCtx)->toString().c_str());
-//
-//        //-------------------------
-//
-//        // const std::string src = "[1, 2, #0, four()]";
-//
-//        // ParsingContext pCtx(lex(src));
-//
-//        // const FuncLangParser generalParser;
-//
-//        // const Parser::ParseResult parseResult = generalParser.parse(pCtx);
-//        // pCtx.consumeTokenCnt(parseResult.numConsumedTokens);
-//
-//        // GlobalExecutionContext geCtx;
-//        // geCtx.addFunction(
-//        //    FunctionDefinitionAST("four", 0, new IntLiteralAST(4)));
-//        //// four -> 4
-//
-//        // std::vector<SelfCleaningPtr<Value>> params;
-//
-//        // params.emplace_back(new RealValue(3));
-//
-//        // ExecutionContext execCtx(geCtx, std::move(params));
-//
-//        // printf("%s",
-//        parseResult.parsedAST->evaluate(execCtx)->toString().c_str());
-//
-//        // -------------------------
-//
-//        const std::string src = "forth->#3 forth(1, 2, 3, 4) ";
-//
-//        ParsingContext parCtx(lex(src));
-//        FuncLangParser generalParser;
-//        Parser::ParseResult parseResult = generalParser.parse(parCtx);
-//        assert(!parseResult.parsedAST.isNull());
-//        assert(parseResult.numConsumedTokens == 4);
-//
-//        parCtx.consumeTokenCnt(parseResult.numConsumedTokens);
-//
-//        SelfCleaningPtr<AST>& funcDef = parseResult.parsedAST;
-//
-//        GlobalExecutionContext globalExecCtx;
-//        ExecutionContext execCtx(globalExecCtx,
-//                                 std::vector<SelfCleaningPtr<Value>>());
-//
-//        funcDef->evaluate(execCtx);
-//        // function now should be defined
-//
-//        parseResult = generalParser.parse(parCtx);
-//        assert(!parseResult.parsedAST.isNull());
-//        assert(parseResult.numConsumedTokens == 10);
-//
-//        SelfCleaningPtr<AST>& funcCall = parseResult.parsedAST;
-//
-//        printf("Called: %s", funcCall->evaluate(execCtx)->toString().c_str());
-//    }
-//    catch (const funclang::LexError& err)
-//    {
-//        std::cout << err;
-//        return ExitCode::PARSE_FAIL;
-//    }
-//
-//    return ExitCode::SUCCESS;
-//}

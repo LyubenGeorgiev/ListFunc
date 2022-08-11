@@ -17,7 +17,7 @@ std::string ListLiteralValue::toString() const noexcept
     {
         if (!first)
         {
-            res += ", ";
+            res += " ";
         }
         
         res += val->toString();
@@ -25,5 +25,17 @@ std::string ListLiteralValue::toString() const noexcept
     }
     res += ']';
     
+    return res;
+}
+
+std::string InfiniteListValue::toString() const noexcept
+{
+    std::string res = "[";
+    for (size_t i = 0; i < 8; ++i)
+    {
+        res += nth(i)->toString();
+    }
+    res += "...";
+
     return res;
 }

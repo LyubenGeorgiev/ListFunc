@@ -1,0 +1,83 @@
+\hypertarget{class_parser}{}\doxysection{Parser Class Reference}
+\label{class_parser}\index{Parser@{Parser}}
+
+
+Parsing vector of Tokens into Abstract Syntax Tree.  
+
+
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_parser_a5cdfe46d3538b5aa38cd639aaaeae1a8}{Parser}} (std\+::vector$<$ \mbox{\hyperlink{class_token}{Token}} $>$\+::iterator begin)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_node}{Node}} $>$ \mbox{\hyperlink{class_parser_afe3391402dbeb1ef75fb75206183d820}{parse}} (std\+::ostream \&out)
+\begin{DoxyCompactList}\small\item\em Returns \mbox{\hyperlink{struct_node}{Node}} from vector of Tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parsing vector of Tokens into Abstract Syntax Tree. 
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00180}{180}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_parser_a5cdfe46d3538b5aa38cd639aaaeae1a8}\label{class_parser_a5cdfe46d3538b5aa38cd639aaaeae1a8}} 
+\index{Parser@{Parser}!Parser@{Parser}}
+\index{Parser@{Parser}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{Parser()}{Parser()}}
+{\footnotesize\ttfamily Parser\+::\+Parser (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_token}{Token}} $>$\+::iterator}]{begin }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{parser_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{parser_8cpp_source}{parser.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00142     : \_currentToken(begin)}
+\DoxyCodeLine{00143 \{}
+\DoxyCodeLine{00144     ;}
+\DoxyCodeLine{00145 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_parser_afe3391402dbeb1ef75fb75206183d820}\label{class_parser_afe3391402dbeb1ef75fb75206183d820}} 
+\index{Parser@{Parser}!parse@{parse}}
+\index{parse@{parse}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_node}{Node}} $>$ Parser\+::parse (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out }\end{DoxyParamCaption})}
+
+
+
+Returns \mbox{\hyperlink{struct_node}{Node}} from vector of Tokens. 
+
+
+
+Definition at line \mbox{\hyperlink{parser_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{parser_8cpp_source}{parser.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125 \{}
+\DoxyCodeLine{00126     std::shared\_ptr<Node> ast = expr(out);}
+\DoxyCodeLine{00127 }
+\DoxyCodeLine{00128     \textcolor{keywordflow}{if} (eof())}
+\DoxyCodeLine{00129     \{}
+\DoxyCodeLine{00130         \textcolor{keywordflow}{return} ast;}
+\DoxyCodeLine{00131     \}}
+\DoxyCodeLine{00132 }
+\DoxyCodeLine{00133     \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Colud not parse the input!"{}});}
+\DoxyCodeLine{00134 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+parser.\+h\item 
+parser.\+cpp\end{DoxyCompactItemize}

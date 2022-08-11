@@ -1,0 +1,36 @@
+\hypertarget{_list_func_8h_source}{}\doxysection{List\+Func.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00003}00003 \textcolor{preprocessor}{\#include "{}lexer.h"{}}}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}parser.h"{}}}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00005}00005 \textcolor{preprocessor}{\#include "{}interpreter.h"{}}}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00008}\mbox{\hyperlink{class_list_func}{00008}} \textcolor{keyword}{class }\mbox{\hyperlink{class_list_func}{ListFunc}}}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00009}00009 \{}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00010}00010 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00011}00011     \mbox{\hyperlink{class_list_func}{ListFunc}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_list_func}{ListFunc}}\& other) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00012}00012     \mbox{\hyperlink{class_list_func}{ListFunc}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_list_func}{ListFunc}}\& other) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00015}\mbox{\hyperlink{class_list_func_a0c90e1f031458ef68b04a95dcd6a5077}{00015}}     \textcolor{keyword}{static} \mbox{\hyperlink{class_list_func}{ListFunc}}\& \mbox{\hyperlink{class_list_func_a0c90e1f031458ef68b04a95dcd6a5077}{getInstance}}()}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00016}00016     \{}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00017}00017         \textcolor{keyword}{static} \mbox{\hyperlink{class_list_func}{ListFunc}} object;}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00019}00019         \textcolor{keywordflow}{return} object;}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00020}00020     \}}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00022}00022     \textcolor{keywordtype}{int} run();}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00023}00023     \textcolor{keywordtype}{int} run(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* path);}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00025}00025 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00026}00026     \mbox{\hyperlink{struct_global_scope}{GlobalScope}} globalScope;}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00029}00029     \mbox{\hyperlink{class_list_func}{ListFunc}}()}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00030}00030     \{}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00031}00031         globalScope.\mbox{\hyperlink{struct_global_scope_ad6db8fd7cf2b8b9dd481fe88bb50653d}{loadDefaultLibrary}}();}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00032}00032     \}}
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_list_func_8h_source_l00034}00034 \};}
+
+\end{DoxyCode}

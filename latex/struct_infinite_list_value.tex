@@ -1,0 +1,147 @@
+\hypertarget{struct_infinite_list_value}{}\doxysection{Infinite\+List\+Value Struct Reference}
+\label{struct_infinite_list_value}\index{InfiniteListValue@{InfiniteListValue}}
+
+
+Contains infinite list.  
+
+
+
+
+{\ttfamily \#include $<$return\+\_\+value.\+h$>$}
+
+Inheritance diagram for Infinite\+List\+Value\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{struct_infinite_list_value}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_infinite_list_value_a03abd953f9d3ee3287acf837baa6b929}{Infinite\+List\+Value}} (double first, double difference) noexcept
+\item 
+std\+::string \mbox{\hyperlink{struct_infinite_list_value_a1f154ea00ee252d53febd27de81ad005}{to\+String}} () const noexcept override
+\begin{DoxyCompactList}\small\item\em Gets the string representation of the data inside. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ \mbox{\hyperlink{struct_infinite_list_value_aca3ac1bd8efee409b82441c9e0f3b793}{nth}} (size\+\_\+t idx) const
+\begin{DoxyCompactList}\small\item\em Accessor to the n-\/th element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{struct_infinite_list_value_a9e522757e403bbabbf19c6e0dc112680}{first}}
+\item 
+double \mbox{\hyperlink{struct_infinite_list_value_a89794dde2e136684ecb6427e6bf51c8e}{difference}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Contains infinite list. 
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00091}{91}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_infinite_list_value_a03abd953f9d3ee3287acf837baa6b929}\label{struct_infinite_list_value_a03abd953f9d3ee3287acf837baa6b929}} 
+\index{InfiniteListValue@{InfiniteListValue}!InfiniteListValue@{InfiniteListValue}}
+\index{InfiniteListValue@{InfiniteListValue}!InfiniteListValue@{InfiniteListValue}}
+\doxysubsubsection{\texorpdfstring{InfiniteListValue()}{InfiniteListValue()}}
+{\footnotesize\ttfamily Infinite\+List\+Value\+::\+Infinite\+List\+Value (\begin{DoxyParamCaption}\item[{double}]{first,  }\item[{double}]{difference }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00096}{96}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00097         : \mbox{\hyperlink{struct_list_value}{ListValue}}(Type::INFINITE\_LIST), first(first), difference(difference)}
+\DoxyCodeLine{00098     \{}
+\DoxyCodeLine{00099         ;}
+\DoxyCodeLine{00100     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_infinite_list_value_aca3ac1bd8efee409b82441c9e0f3b793}\label{struct_infinite_list_value_aca3ac1bd8efee409b82441c9e0f3b793}} 
+\index{InfiniteListValue@{InfiniteListValue}!nth@{nth}}
+\index{nth@{nth}!InfiniteListValue@{InfiniteListValue}}
+\doxysubsubsection{\texorpdfstring{nth()}{nth()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ Infinite\+List\+Value\+::nth (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Accessor to the n-\/th element. 
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00106}{106}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00107     \{}
+\DoxyCodeLine{00108         \textcolor{keywordflow}{return} std::shared\_ptr<Value>(\textcolor{keyword}{new} \mbox{\hyperlink{struct_real_value}{RealValue}}(first + idx * difference));}
+\DoxyCodeLine{00109     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_infinite_list_value_a1f154ea00ee252d53febd27de81ad005}\label{struct_infinite_list_value_a1f154ea00ee252d53febd27de81ad005}} 
+\index{InfiniteListValue@{InfiniteListValue}!toString@{toString}}
+\index{toString@{toString}!InfiniteListValue@{InfiniteListValue}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Infinite\+List\+Value\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Gets the string representation of the data inside. 
+
+
+
+Implements \mbox{\hyperlink{struct_list_value_af3d6c44b0cce71ce3db3f38858c574a1}{List\+Value}}.
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{return__value_8cpp_source}{return\+\_\+value.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032 \{}
+\DoxyCodeLine{00033     std::string res = \textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{00034     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 8; ++i)}
+\DoxyCodeLine{00035     \{}
+\DoxyCodeLine{00036         res += \mbox{\hyperlink{struct_infinite_list_value_aca3ac1bd8efee409b82441c9e0f3b793}{nth}}(i)-\/>toString();}
+\DoxyCodeLine{00037     \}}
+\DoxyCodeLine{00038     res += \textcolor{stringliteral}{"{}..."{}};}
+\DoxyCodeLine{00039 }
+\DoxyCodeLine{00040     \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{00041 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_infinite_list_value_a89794dde2e136684ecb6427e6bf51c8e}\label{struct_infinite_list_value_a89794dde2e136684ecb6427e6bf51c8e}} 
+\index{InfiniteListValue@{InfiniteListValue}!difference@{difference}}
+\index{difference@{difference}!InfiniteListValue@{InfiniteListValue}}
+\doxysubsubsection{\texorpdfstring{difference}{difference}}
+{\footnotesize\ttfamily double Infinite\+List\+Value\+::difference}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00094}{94}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+\mbox{\Hypertarget{struct_infinite_list_value_a9e522757e403bbabbf19c6e0dc112680}\label{struct_infinite_list_value_a9e522757e403bbabbf19c6e0dc112680}} 
+\index{InfiniteListValue@{InfiniteListValue}!first@{first}}
+\index{first@{first}!InfiniteListValue@{InfiniteListValue}}
+\doxysubsubsection{\texorpdfstring{first}{first}}
+{\footnotesize\ttfamily double Infinite\+List\+Value\+::first}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00093}{93}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+return\+\_\+value.\+h\item 
+return\+\_\+value.\+cpp\end{DoxyCompactItemize}

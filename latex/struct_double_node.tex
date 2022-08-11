@@ -1,0 +1,116 @@
+\hypertarget{struct_double_node}{}\doxysection{Double\+Node Struct Reference}
+\label{struct_double_node}\index{DoubleNode@{DoubleNode}}
+
+
+Abstract syntax tree with double.  
+
+
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+Inheritance diagram for Double\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_double_node}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_double_node_ae41a0e0a019724b2af87ab6fae1a0683}{Double\+Node}} (\mbox{\hyperlink{class_token}{Token}} token)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ \mbox{\hyperlink{struct_double_node_a057f2b079a311689d1dc2ee7489971f3}{eval}} (\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&fnc\+Scp) const override
+\begin{DoxyCompactList}\small\item\em Evaluates to \mbox{\hyperlink{struct_value}{Value}}. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{struct_double_node_a5c25bf3385709ffdc13211505cc49a58}{get\+Argc}} () const override
+\begin{DoxyCompactList}\small\item\em Needed for figuring out the number of arguments in function definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Abstract syntax tree with double. 
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00047}{47}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_double_node_ae41a0e0a019724b2af87ab6fae1a0683}\label{struct_double_node_ae41a0e0a019724b2af87ab6fae1a0683}} 
+\index{DoubleNode@{DoubleNode}!DoubleNode@{DoubleNode}}
+\index{DoubleNode@{DoubleNode}!DoubleNode@{DoubleNode}}
+\doxysubsubsection{\texorpdfstring{DoubleNode()}{DoubleNode()}}
+{\footnotesize\ttfamily Double\+Node\+::\+Double\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_token}{Token}}}]{token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{parser_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{parser_8cpp_source}{parser.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031     : \mbox{\hyperlink{struct_node}{Node}}(token)}
+\DoxyCodeLine{00032 \{}
+\DoxyCodeLine{00033     ;}
+\DoxyCodeLine{00034 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_double_node_a057f2b079a311689d1dc2ee7489971f3}\label{struct_double_node_a057f2b079a311689d1dc2ee7489971f3}} 
+\index{DoubleNode@{DoubleNode}!eval@{eval}}
+\index{eval@{eval}!DoubleNode@{DoubleNode}}
+\doxysubsubsection{\texorpdfstring{eval()}{eval()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_value}{Value}} $>$ Double\+Node\+::eval (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_function_scope}{Function\+Scope}} \&}]{fnc\+Scp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Evaluates to \mbox{\hyperlink{struct_value}{Value}}. 
+
+
+
+Implements \mbox{\hyperlink{struct_node_ab6e81480e3edb77e75410cdeff9c03ef}{Node}}.
+
+
+
+Definition at line \mbox{\hyperlink{parser_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{parser_8cpp_source}{parser.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037 \{}
+\DoxyCodeLine{00038     \textcolor{keywordflow}{return} std::dynamic\_pointer\_cast<Value>(}
+\DoxyCodeLine{00039         std::make\_shared<RealValue>(std::stod(token.data))}
+\DoxyCodeLine{00040     );}
+\DoxyCodeLine{00041 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_double_node_a5c25bf3385709ffdc13211505cc49a58}\label{struct_double_node_a5c25bf3385709ffdc13211505cc49a58}} 
+\index{DoubleNode@{DoubleNode}!getArgc@{getArgc}}
+\index{getArgc@{getArgc}!DoubleNode@{DoubleNode}}
+\doxysubsubsection{\texorpdfstring{getArgc()}{getArgc()}}
+{\footnotesize\ttfamily size\+\_\+t Double\+Node\+::get\+Argc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Needed for figuring out the number of arguments in function definition. 
+
+
+
+Implements \mbox{\hyperlink{struct_node_a50ca714e7aa6099de107e404e2b596f9}{Node}}.
+
+
+
+Definition at line \mbox{\hyperlink{parser_8h_source_l00054}{54}} of file \mbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055     \{}
+\DoxyCodeLine{00056         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00057     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+parser.\+h\item 
+parser.\+cpp\end{DoxyCompactItemize}

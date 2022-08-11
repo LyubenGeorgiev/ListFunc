@@ -1,0 +1,101 @@
+\hypertarget{struct_real_value}{}\doxysection{Real\+Value Struct Reference}
+\label{struct_real_value}\index{RealValue@{RealValue}}
+
+
+Contains double.  
+
+
+
+
+{\ttfamily \#include $<$return\+\_\+value.\+h$>$}
+
+Inheritance diagram for Real\+Value\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_real_value}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_real_value_a00fcfa6811ea404301b49b214de42fed}{Real\+Value}} (double value) noexcept
+\item 
+std\+::string \mbox{\hyperlink{struct_real_value_a24c321b1e5a46452627a69dbd62067b8}{to\+String}} () const noexcept override
+\begin{DoxyCompactList}\small\item\em Overriden method of class \mbox{\hyperlink{struct_value}{Value}}. Converts double to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const double \mbox{\hyperlink{struct_real_value_a07ca40795bb94a0c1cc51041ecd4ac53}{value}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Contains double. 
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00029}{29}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_real_value_a00fcfa6811ea404301b49b214de42fed}\label{struct_real_value_a00fcfa6811ea404301b49b214de42fed}} 
+\index{RealValue@{RealValue}!RealValue@{RealValue}}
+\index{RealValue@{RealValue}!RealValue@{RealValue}}
+\doxysubsubsection{\texorpdfstring{RealValue()}{RealValue()}}
+{\footnotesize\ttfamily Real\+Value\+::\+Real\+Value (\begin{DoxyParamCaption}\item[{double}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00033}{33}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033 : \mbox{\hyperlink{struct_value}{Value}}(Type::REAL\_NUMBER), value(value) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_real_value_a24c321b1e5a46452627a69dbd62067b8}\label{struct_real_value_a24c321b1e5a46452627a69dbd62067b8}} 
+\index{RealValue@{RealValue}!toString@{toString}}
+\index{toString@{toString}!RealValue@{RealValue}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Real\+Value\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Overriden method of class \mbox{\hyperlink{struct_value}{Value}}. Converts double to string. 
+
+
+
+Implements \mbox{\hyperlink{struct_value_ae71e0ce1d445e3d9b9775cd415e88d58}{Value}}.
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00036}{36}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037     \{}
+\DoxyCodeLine{00038         \textcolor{keywordflow}{return} std::to\_string(value);}
+\DoxyCodeLine{00039     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_real_value_a07ca40795bb94a0c1cc51041ecd4ac53}\label{struct_real_value_a07ca40795bb94a0c1cc51041ecd4ac53}} 
+\index{RealValue@{RealValue}!value@{value}}
+\index{value@{value}!RealValue@{RealValue}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily const double Real\+Value\+::value}
+
+
+
+Definition at line \mbox{\hyperlink{return__value_8h_source_l00031}{31}} of file \mbox{\hyperlink{return__value_8h_source}{return\+\_\+value.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+return\+\_\+value.\+h\end{DoxyCompactItemize}

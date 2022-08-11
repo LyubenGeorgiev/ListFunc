@@ -3,57 +3,37 @@
 #include <iostream>
 #include <string>
 
-
+//! Representation of input
 class Token
 {
 public:
     enum class Type {
-/*
-        add,
-        sub,
-        mul,
-        div,
-        mod, // Int numbers only
-        sqrt,
-        
-        nand,
-        
-        eq,
-        lt, // Less than, function is le(#0, #1)
-        
-        len,
-        head,
-        tail,
-        list,
-        concat,
+        COMMA,
 
-        to_int, // Casting to int
+        OPEN_ROUND,
+        CLOSE_ROUND,
         
-        kw_if,
-*/
-        comma,
+        OPEN_SQUARE,
+        CLOSE_SQUARE,
 
-        open_round,
-        close_round,
+        ARROW,
+
+        ARG, // Starting with #
+        FUNC,
         
-        open_square,
-        close_square,
-
-        arrow,
-
-        arg, // Starting with #
-        func,
-        
-        kw_int,
-        kw_double,
+        KW_INT,
+        KW_DOUBLE,
 
         eof,
     };
 
-    Type _type;
-    std::string _data;
-    int _startIdx;
+    Type type;
+    std::string data;
+    int startIdx;
 
+    //! Returns string of the data. Used for debugging and error handling.
+    std::string print() const;
+    //! Uses the print() function and has mainly debugging purposes
     friend std::ostream& operator<<(std::ostream&, const Token&);
 
 };

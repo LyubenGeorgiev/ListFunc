@@ -1,0 +1,37 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}ListFunc.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003 \textcolor{comment}{// pow -\/> if (eq(\#1, 0), 1, if(mod(\#1,2), mul(\#0, pow(mul(\#0, \#0), div(\#1, 2))), pow(mul(\#0, \#0), div(\#1, 2))))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004 \textcolor{comment}{// fib -\/> int(div(sub(pow(add(1, sqrt(5)), \#0), pow(sub(1, sqrt(5)), \#0)), mul(pow(2, \#0), sqrt(5))))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005 \textcolor{comment}{// fact -\/> if(eq(\#0, 1), 1, mul(\#0, fact(sub(\#0,1))))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006 \textcolor{comment}{// fib -\/> if (le(\#0, 2), \#0, add(fib(sub(\#0,1)), fib(sub(\#0,2))))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008 \textcolor{comment}{// not -\/> nand(\#0, 1)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009 \textcolor{comment}{// and -\/> not(nand(\#0, \#1))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010 \textcolor{comment}{// divisors -\/> concat([2], list(3, 2, div(int(sqrt(\#0)), 2)))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011 \textcolor{comment}{// containsDevisors -\/> if(length(\#0), if(mod(\#1,int(head(\#0))), containsDevisors(tail(\#0), \#1), 1), 0)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 \textcolor{comment}{// isPrime -\/> if(eq(\#0, 2), 1, not(containsDevisors(divisors(\#0), \#0)))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 \textcolor{comment}{// filterPrimes -\/> if(length(\#0), if(isPrime(int(head(\#0))), concat([head(\#0)], filterPrimes(tail(\#0))), filterPrimes(tail(\#0))), [])}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014 \textcolor{comment}{// primesTo -\/> filterPrimes(concat([2], list(3, 1, sub(\#0, 2))))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016 \textcolor{comment}{// hanoi -\/> if(eq(\#0, 0), 0, head(tail(concat([hanoi(sub(\#0,1), \#1, \#3, \#2) write([\#0 \#1 \#2]) hanoi(sub(\#0,1), \#3, \#2, \#1)], []))))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017 \textcolor{comment}{// min -\/> if(\#0, if(nand(nand(\#1, le(head(\#0), head(\#1))), 1), min(tail(\#0), concat([head(\#0)], \#1)), min(tail(\#0), concat(\#1, [head(\#0)]))), \#1)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018 \textcolor{comment}{// sort -\/> if(\#0, concat([head(min(\#0, []))], sort(tail(min(\#0, [])))), [])}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020 \textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}** argv)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022     \textcolor{keywordflow}{if} (argc == 1) \textcolor{comment}{// Run the program}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_list_func_a0c90e1f031458ef68b04a95dcd6a5077}{ListFunc::getInstance}}().run();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 2) \textcolor{comment}{// Run from file}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_list_func_a0c90e1f031458ef68b04a95dcd6a5077}{ListFunc::getInstance}}().run(argv[1]);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031     \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032 \}}
+
+\end{DoxyCode}

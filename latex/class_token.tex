@@ -1,0 +1,228 @@
+\hypertarget{class_token}{}\doxysection{Token Class Reference}
+\label{class_token}\index{Token@{Token}}
+
+
+Representation of input.  
+
+
+
+
+{\ttfamily \#include $<$token.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class {\bfseries Type} \{ \newline
+{\bfseries COMMA}
+, {\bfseries OPEN\+\_\+\+ROUND}
+, {\bfseries CLOSE\+\_\+\+ROUND}
+, {\bfseries OPEN\+\_\+\+SQUARE}
+, \newline
+{\bfseries CLOSE\+\_\+\+SQUARE}
+, {\bfseries ARROW}
+, {\bfseries ARG}
+, {\bfseries FUNC}
+, \newline
+{\bfseries KW\+\_\+\+INT}
+, {\bfseries KW\+\_\+\+DOUBLE}
+, {\bfseries eof}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}{print}} () const
+\begin{DoxyCompactList}\small\item\em Returns string of the data. Used for debugging and error handling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Type \mbox{\hyperlink{class_token_a7e5e6513d379ca2e388273b23ea1ba4a}{type}}
+\item 
+std\+::string \mbox{\hyperlink{class_token_ad536a520dac03ae812f429b220e9808a}{data}}
+\item 
+int \mbox{\hyperlink{class_token_a34ef6767d62ee9984f301f84d1e256a2}{start\+Idx}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{class_token_a87c4caa6c4e66a977462e85f6261ef43}{operator$<$$<$}} (std\+::ostream \&, const \mbox{\hyperlink{class_token}{Token}} \&)
+\begin{DoxyCompactList}\small\item\em Uses the \mbox{\hyperlink{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}{print()}} function and has mainly debugging purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representation of input. 
+
+Definition at line \mbox{\hyperlink{token_8h_source_l00007}{7}} of file \mbox{\hyperlink{token_8h_source}{token.\+h}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_token_acf70e9411196c602738c3ed2428c7137}\label{class_token_acf70e9411196c602738c3ed2428c7137}} 
+\index{Token@{Token}!Type@{Type}}
+\index{Type@{Type}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum class Token\+::\+Type\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Definition at line \mbox{\hyperlink{token_8h_source_l00010}{10}} of file \mbox{\hyperlink{token_8h_source}{token.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010                     \{}
+\DoxyCodeLine{00011         COMMA,}
+\DoxyCodeLine{00012 }
+\DoxyCodeLine{00013         OPEN\_ROUND,}
+\DoxyCodeLine{00014         CLOSE\_ROUND,}
+\DoxyCodeLine{00015         }
+\DoxyCodeLine{00016         OPEN\_SQUARE,}
+\DoxyCodeLine{00017         CLOSE\_SQUARE,}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019         ARROW,}
+\DoxyCodeLine{00020 }
+\DoxyCodeLine{00021         ARG, \textcolor{comment}{// Starting with \#}}
+\DoxyCodeLine{00022         FUNC,}
+\DoxyCodeLine{00023         }
+\DoxyCodeLine{00024         KW\_INT,}
+\DoxyCodeLine{00025         KW\_DOUBLE,}
+\DoxyCodeLine{00026 }
+\DoxyCodeLine{00027         eof,}
+\DoxyCodeLine{00028     \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}\label{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}} 
+\index{Token@{Token}!print@{print}}
+\index{print@{print}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily std\+::string Token\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns string of the data. Used for debugging and error handling. 
+
+
+
+Definition at line \mbox{\hyperlink{token_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{token_8cpp_source}{token.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005 \{}
+\DoxyCodeLine{00006     std::string res = \textcolor{stringliteral}{"{}\{TokenType: "{}};}
+\DoxyCodeLine{00007 }
+\DoxyCodeLine{00008     \textcolor{keywordflow}{switch} (type)}
+\DoxyCodeLine{00009     \{}
+\DoxyCodeLine{00010     \textcolor{keywordflow}{case} Token::Type::COMMA:}
+\DoxyCodeLine{00011         res += \textcolor{stringliteral}{"{}Comma, "{}};}
+\DoxyCodeLine{00012         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00013     \textcolor{keywordflow}{case} Token::Type::OPEN\_ROUND:}
+\DoxyCodeLine{00014         res += \textcolor{stringliteral}{"{}OPEN\_ROUND, "{}};}
+\DoxyCodeLine{00015         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00016     \textcolor{keywordflow}{case} Token::Type::CLOSE\_ROUND:}
+\DoxyCodeLine{00017         res += \textcolor{stringliteral}{"{}CLOSED\_ROUND, "{}};}
+\DoxyCodeLine{00018         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00019     \textcolor{keywordflow}{case} Token::Type::OPEN\_SQUARE:}
+\DoxyCodeLine{00020         res += \textcolor{stringliteral}{"{}OPEN\_SQARE, "{}};}
+\DoxyCodeLine{00021         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00022     \textcolor{keywordflow}{case} Token::Type::CLOSE\_SQUARE:}
+\DoxyCodeLine{00023         res += \textcolor{stringliteral}{"{}CLOSE\_SQARE, "{}};}
+\DoxyCodeLine{00024         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00025     \textcolor{keywordflow}{case} Token::Type::ARROW:}
+\DoxyCodeLine{00026         res += \textcolor{stringliteral}{"{}ARROW, "{}};}
+\DoxyCodeLine{00027         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00028     \textcolor{keywordflow}{case} Token::Type::ARG:}
+\DoxyCodeLine{00029         res += \textcolor{stringliteral}{"{}ARG, "{}};}
+\DoxyCodeLine{00030         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00031     \textcolor{keywordflow}{case} Token::Type::FUNC:}
+\DoxyCodeLine{00032         res += \textcolor{stringliteral}{"{}FUNC, "{}};}
+\DoxyCodeLine{00033         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00034     \textcolor{keywordflow}{case} Token::Type::KW\_INT:}
+\DoxyCodeLine{00035         res += \textcolor{stringliteral}{"{}INT, "{}};}
+\DoxyCodeLine{00036         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00037     \textcolor{keywordflow}{case} Token::Type::KW\_DOUBLE:}
+\DoxyCodeLine{00038         res += \textcolor{stringliteral}{"{}DOUBLE, "{}};}
+\DoxyCodeLine{00039         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00040     \textcolor{keywordflow}{case} Token::Type::eof:}
+\DoxyCodeLine{00041         res += \textcolor{stringliteral}{"{}EOF, "{}};}
+\DoxyCodeLine{00042         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00043     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00044         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00045     \}}
+\DoxyCodeLine{00046 }
+\DoxyCodeLine{00047     res += \textcolor{stringliteral}{"{}TokenData: \(\backslash\)"{}"{}};}
+\DoxyCodeLine{00048     res += data;}
+\DoxyCodeLine{00049     res += \textcolor{stringliteral}{"{}\(\backslash\)"{}, TokenStartIndex: "{}};}
+\DoxyCodeLine{00050     res += std::to\_string(startIdx);}
+\DoxyCodeLine{00051     res += \textcolor{stringliteral}{"{}\}"{}};}
+\DoxyCodeLine{00052 }
+\DoxyCodeLine{00053     \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{00054 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_token_a87c4caa6c4e66a977462e85f6261ef43}\label{class_token_a87c4caa6c4e66a977462e85f6261ef43}} 
+\index{Token@{Token}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out,  }\item[{const \mbox{\hyperlink{class_token}{Token}} \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Uses the \mbox{\hyperlink{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}{print()}} function and has mainly debugging purposes. 
+
+
+
+Definition at line \mbox{\hyperlink{token_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{token_8cpp_source}{token.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057 \{}
+\DoxyCodeLine{00058     out << t.\mbox{\hyperlink{class_token_a0ac777488f8e560a0cdbb30b6a55a8d4}{print}}();}
+\DoxyCodeLine{00059 }
+\DoxyCodeLine{00060     \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{00061 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_token_ad536a520dac03ae812f429b220e9808a}\label{class_token_ad536a520dac03ae812f429b220e9808a}} 
+\index{Token@{Token}!data@{data}}
+\index{data@{data}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily std\+::string Token\+::data}
+
+
+
+Definition at line \mbox{\hyperlink{token_8h_source_l00031}{31}} of file \mbox{\hyperlink{token_8h_source}{token.\+h}}.
+
+\mbox{\Hypertarget{class_token_a34ef6767d62ee9984f301f84d1e256a2}\label{class_token_a34ef6767d62ee9984f301f84d1e256a2}} 
+\index{Token@{Token}!startIdx@{startIdx}}
+\index{startIdx@{startIdx}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{startIdx}{startIdx}}
+{\footnotesize\ttfamily int Token\+::start\+Idx}
+
+
+
+Definition at line \mbox{\hyperlink{token_8h_source_l00032}{32}} of file \mbox{\hyperlink{token_8h_source}{token.\+h}}.
+
+\mbox{\Hypertarget{class_token_a7e5e6513d379ca2e388273b23ea1ba4a}\label{class_token_a7e5e6513d379ca2e388273b23ea1ba4a}} 
+\index{Token@{Token}!type@{type}}
+\index{type@{type}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily Type Token\+::type}
+
+
+
+Definition at line \mbox{\hyperlink{token_8h_source_l00030}{30}} of file \mbox{\hyperlink{token_8h_source}{token.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+token.\+h\item 
+token.\+cpp\end{DoxyCompactItemize}
