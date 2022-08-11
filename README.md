@@ -1,4 +1,5 @@
 <h1 align="center">ListFunc - Functional language interpreter</h1>
+<h3 align="center">Author - Lyuben Georgiev</h3>
 
 ### Rules of ListFunc:
 ```
